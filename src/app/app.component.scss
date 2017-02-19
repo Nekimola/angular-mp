@@ -1,17 +1,3 @@
-h1 {
-  margin: 0;
-  line-height: inherit;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-.btn {
-  background-color: rgba(18, 18, 18, 0.05);
-}
-
 header {
   width: 100%;
   padding: 30px 20px;
@@ -22,35 +8,12 @@ header {
     display: inline-block;
     margin-right: auto;
   }
-
-  .header-item {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding-right: 20px;
-
-    .form-group, label {
-      margin: 0;
-    }
-  }
-}
-
-progress {
-  width: 100%;
 }
 
 .action-holder {
   padding: 20px 40px 20px 30px;
   display: flex;
   justify-content: space-between;
-
-  .btn {
-    padding: 7px 1rem;
-  }
-
-  .input-group-addon {
-    padding: 0;
-  }
 }
 
 .content {
@@ -63,87 +26,10 @@ progress {
     overflow-y: auto;
   }
 
-  .category-list {
-    list-style: none;
-    border-top: 1px solid rgba(0, 0, 0, .15);
-    border-right: 1px solid rgba(0, 0, 0, .15);
-
-    .category-item {
-      min-height: 33px;
-      line-height: 30px;
-      padding: 0 0 0 30px;
-      font-size: 17px;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(0, 0, 0, .15);
-      border-left: 1px solid rgba(0, 0, 0, .15);
-      position: relative;
-
-      &.active {
-        background-color: #eef7f9;
-      }
-
-      .btn {
-        margin-left: 10px;
-        padding: 5px 10px;
-        border-radius: 0;
-      }
-
-      .arrow {
-        position: absolute;
-        top: 0;
-        left: 0;
-        margin: 0;
-        padding:5px;
-      }
-
-      input {
-        height: 25px;
-        padding: 0 5px;
-      }
-    }
-
-    li {
-      ul {
-        border: none;
-
-        li {
-          padding-left: 30px;
-        }
-
-        li:last-child {
-          border-bottom: none;
-        }
-      }
-    }
-  }
-
   .main-list {
     width: 70%;
     overflow-y: auto;
     padding: 0 40px;
-
-    .edit-todo {
-      input[type="submit"] {
-        margin-right: 10px;
-      }
-    }
-
-    .todo-list {
-      list-style: none;
-      border-top: 1px solid rgba(0, 0, 0, .15);
-      border-left: 1px solid rgba(0, 0, 0, .15);
-      border-right: 1px solid rgba(0, 0, 0, .15);
-
-      li {
-        border-bottom: 1px solid rgba(0, 0, 0, .15);
-        padding: 20px;
-      }
-
-      h3 {
-        display: inline-block;
-        padding-left: 30px;
-      }
-    }
   }
 
 }

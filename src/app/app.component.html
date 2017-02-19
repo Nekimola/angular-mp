@@ -1,97 +1,23 @@
 <main>
   <header>
     <h1>To-Do List</h1>
-    <div class="checkbox header-item">
-      <label>
-        <input type="checkbox"/> Show done
-      </label>
-    </div>
-    <form action="" class="header-item">
-      <div class="form-group">
-        <input type="text"
-               class="form-control"
-               placeholder="Search"/>
-      </div>
-    </form>
+    <filters></filters>
   </header>
   
-  <progress value="0.4" max=1></progress>
+  <progress-bar></progress-bar>
   
   <section class="action-holder">
-    <form class="form-inline">
-      <div class="form-group">
-        <div class="input-group">
-          <input type="text"
-                 autoComplete="off"
-                 class="form-control"
-                 id="exampleInputAmount"
-                 placeholder="Enter category title"/>
-          <div class="input-group-addon">
-            <button type="submit" class="btn">Add</button>
-          </div>
-        </div>
-      </div>
-    </form>
-    
-    <form class="form-inline">
-      <div class="form-group">
-        <div class="input-group">
-          <input type="text"
-                 class="form-control"
-                 id="exampleInputAmount"
-                 placeholder="Enter todo title"
-                 ref=""/>
-          <div class="input-group-addon">
-            <button type="submit" class="btn">Add</button>
-          </div>
-        </div>
-      </div>
-    </form>
+    <add-category></add-category>
+    <add-todo></add-todo>
   </section>
   
   <div class="content">
     <section class="sidebar">
-      <ul class="category-list">
-        <li>
-          <div class="">
-            <span>
-              <button class="btn arrow">
-                <i class=""></i>
-              </button>
-              <input type="text"
-                     value=""/>
-              <a href="">asd asd</a>
-              <button class="btn">
-                <i class="fa fa-edit"></i>
-              </button>
-            </span>
-            <span class="pull-right">
-              <button class="btn">
-                <i class="fa fa-trash"></i>
-              </button>
-              <button class="btn">
-                <i class="fa fa-plus-square-o"></i>
-              </button>
-              <button class="btn"
-                      onClick="">
-                <i class="fa fa-mail-reply"></i>
-              </button>
-            </span>
-          </div>
-        </li>
-      </ul>
+      <category-list></category-list>
     </section>
     
     <section class="main-list">
-      <ul class="todo-list">
-        <li>
-          <input type="checkbox" checked=true/>
-          <h3>asd as </h3>
-          <a href="">
-            <button class="btn pull-right"><i class="fa fa-edit"></i></button>
-          </a>
-        </li>
-      </ul>
+      <todo-list></todo-list>
     </section>
   </div>
 </main>

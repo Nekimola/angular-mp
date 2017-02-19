@@ -1,0 +1,53 @@
+.category-list {
+  list-style: none;
+  border-top: 1px solid rgba(0, 0, 0, .15);
+  border-right: 1px solid rgba(0, 0, 0, .15);
+
+  .category-item {
+    min-height: 33px;
+    line-height: 30px;
+    padding: 0 0 0 30px;
+    font-size: 17px;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, .15);
+    border-left: 1px solid rgba(0, 0, 0, .15);
+    position: relative;
+
+    &.active {
+      background-color: #eef7f9;
+    }
+
+    .btn {
+      margin-left: 10px;
+      padding: 5px 10px;
+      border-radius: 0;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding:5px;
+    }
+
+    input {
+      height: 25px;
+      padding: 0 5px;
+    }
+  }
+
+  li {
+    ul {
+      border: none;
+
+      li {
+        padding-left: 30px;
+      }
+
+      li:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}

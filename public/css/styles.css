@@ -1,3 +1,17 @@
 body {
 
 }
+
+.btn {
+  background-color: rgba(18, 18, 18, 0.05);
+}
+
+h1 {
+  margin: 0;
+  line-height: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
