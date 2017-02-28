@@ -3,9 +3,11 @@ import '../../public/css/styles.css';
 
 @Component({
   selector: 'todo-app',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.html',
+  styleUrls: ['./app.scss']
 })
 export class AppComponent {
-
+  onAddCategory (name) {
+    console.log(name);
+  }
 }

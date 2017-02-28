@@ -5,9 +5,10 @@
              autoComplete="off"
              class="form-control"
              id="exampleInputAmount"
-             placeholder="Enter category title"/>
+             placeholder="Enter category title"
+             [(ngModel)]="category"/>
       <div class="input-group-addon">
-        <button type="submit" class="btn">Add</button>
+        <button type="button" class="btn" (click)="onAdd.next(category)">Add</button>
       </div>
     </div>
   </div>
