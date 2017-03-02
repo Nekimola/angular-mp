@@ -1,0 +1,14 @@
+.action-holder {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .btn {
+    padding: 5px 10px;
+  }
+
+  .input-group-addon {
+    padding: 0;
+  }
+}

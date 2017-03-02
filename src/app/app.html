@@ -1,23 +1,9 @@
 <main>
-  <header>
-    <h1>To-Do List</h1>
-    <filters></filters>
-  </header>
-  
-  <progress-bar></progress-bar>
-  
-  <section class="action-holder">
-    <add-category (onAdd)="onAddCategory($event)"></add-category>
-    <add-todo></add-todo>
-  </section>
-  
-  <div class="content">
-    <section class="sidebar">
-      <category-list></category-list>
-    </section>
+  <app-header></app-header>
+     
+  <section class="content">
+    <tool-bar></tool-bar>
     
-    <section class="main-list">
-      <todo-list></todo-list>
-    </section>
-  </div>
+    <courses-list></courses-list>
+  </section>
 </main>

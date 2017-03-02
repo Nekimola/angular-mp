@@ -7,7 +7,4 @@ import '../../public/css/styles.css';
   styleUrls: ['./app.scss']
 })
 export class AppComponent {
-  onAddCategory (name) {
-    console.log(name);
-  }
 }
