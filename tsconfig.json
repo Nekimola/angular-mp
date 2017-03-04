@@ -6,11 +6,12 @@
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
     "exclude": [
-      "./src",
+      "node_modules",
       "dist"
     ],
     "typeRoots": [

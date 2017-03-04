@@ -1,12 +1,12 @@
 <li class="course-item">
   <div class="course-details">
     <div class="course-header">
-      <h4>Video course</h4>
-      <span>1h 28min</span>
-      <time>1957-10-04</time>
+      <h4>{{course.title}}</h4>
+      <span>{{course.duration}}</span>
+      <time>{{course.date | date}}</time>
     </div>
     <div class="course-description">
-      Some random words random words random words random words random words
+      {{course.description}}
     </div>
   </div>
   <div class="course-actions">
