@@ -3,12 +3,12 @@ import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
 import { Course } from "../../models/course";
 
 @Component({
-  selector: 'courses-list',
-  templateUrl: './courses-list.html',
-  styleUrls: ['./courses-list.scss'],
+  selector: 'course-item',
+  templateUrl: 'course-item.html',
+  styleUrls: ['course-item.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CoursesListComponent {
+export class CourseItemComponent {
   @Input()
-  courses: Course[];
+  course: Course;
 }

@@ -1,16 +1,23 @@
 import { Component } from '@angular/core';
 import { Observable } from "rxjs";
-import '../../public/css/styles.css';
+import '../../../public/css/styles.css';
 import { Store } from "@ngrx/store";
 
-import { AppState } from "./store";
-import { Course } from "./pages/home/models/course";
-import { AddCourseAction } from "./pages/home/actions/courses";
+import { AppState } from "../store";
+import { Course } from "../models/course";
+import { AddCourseAction } from "../actions/courses";
 
 @Component({
-  selector: 'todo-app',
-  templateUrl: './app.html',
-  styleUrls: ['./app.scss']
+  selector: 'courses-app',
+  template: `
+    <main>
+      <app-header></app-header>
+      <section class="content">
+        <tool-bar></tool-bar>
+        <courses-list [courses]="courses$ | async"></courses-list>
+      </section>
+    </main>
+  `
 })
 export class AppComponent {
   courses$: Observable<Course[]>;

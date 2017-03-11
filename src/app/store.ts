@@ -2,8 +2,8 @@ import { compose } from "@ngrx/core/compose";
 import { ActionReducer, combineReducers } from "@ngrx/store";
 import { storeFreeze } from "ngrx-store-freeze";
 
-import { Course } from "./pages/home/models/course";
-import { coursesReducer } from "./pages/home/reducers/courses"
+import { Course } from "./models/course";
+import { coursesReducer } from "./reducers/courses"
 
 export interface AppState {
   courses: Course[]
