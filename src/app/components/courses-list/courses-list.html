@@ -1,3 +1,5 @@
 <ul class="courses-list">
-  <course-item *ngFor="let item of courses" [course]="item"></course-item>
+  <course-item *ngFor="let item of courses"
+               [course]="item"
+               (remove)="remove.next($event)"></course-item>
 </ul>

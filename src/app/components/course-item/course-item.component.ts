@@ -1,4 +1,5 @@
-import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
+import { Component, Input, ChangeDetectionStrategy, Output } from "@angular/core";
+import { Subject } from "rxjs";
 
 import { Course } from "../../models/course";
 
@@ -11,4 +12,7 @@ import { Course } from "../../models/course";
 export class CourseItemComponent {
   @Input()
   course: Course;
+
+  @Output()
+  remove = new Subject<string>();
 }
