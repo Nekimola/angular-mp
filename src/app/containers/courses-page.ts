@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { Component, ChangeDetectionStrategy, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
 
@@ -16,11 +16,13 @@ import { AppState } from "../store";
     </section>
   `
 })
-export class CoursesPageComponent {
+export class CoursesPageComponent implements OnInit {
   courses$: Observable<Course[]>;
 
-  constructor(private store: Store<AppState>) {
-    this.courses$ = store.select('courses');
+  constructor(private store: Store<AppState>) {}
+
+  ngOnInit () {
+    this.courses$ = this.store.select('courses');
 
     this.store.dispatch(new AddCourseAction({
       id: Math.random().toString(36).slice(-8),
