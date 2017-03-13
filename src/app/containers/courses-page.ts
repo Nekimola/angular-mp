@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
 
 import { Course } from "../models/course";
-import { AddCourseAction, RemoveCourseAction } from "../actions/courses";
+import { AddCourseAction, RemoveCourseAction, SearchCourseAction } from "../actions/courses";
 import { AppState } from "../store";
 
 @Component({
@@ -11,7 +11,7 @@ import { AppState } from "../store";
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `    
     <section class="content">
-      <tool-bar></tool-bar>
+      <tool-bar (search)="onSearch($event)"></tool-bar>
       <courses-list [courses]="courses$ | async" (remove)="onRemove($event)"></courses-list>
     </section>
   `
@@ -32,6 +32,10 @@ export class CoursesPageComponent {
   }
 
   onRemove (id) {
-    this.store.dispatch(new RemoveCourseAction(id))
+    this.store.dispatch(new RemoveCourseAction(id));
+  }
+
+  onSearch (query) {
+    this.store.dispatch(new SearchCourseAction(query));
   }
 }

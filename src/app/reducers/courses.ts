@@ -20,5 +20,10 @@ export const coursesReducer = (state = initialState, action) => {
         ...state.slice(index + 1)
       ];
     }
+
+    case actionTypes.SEARCH: {
+      console.log(action.payload);
+      return state;
+    }
   }
 };

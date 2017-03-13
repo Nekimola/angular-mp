@@ -3,7 +3,8 @@ import { Course } from "../models/course";
 
 export const actionTypes = {
   ADD: 'ADD_COURSE',
-  REMOVE: 'REMOVE_COURSE'
+  REMOVE: 'REMOVE_COURSE',
+  SEARCH: 'SEARCH_COURSE'
 };
 
 export class AddCourseAction implements Action {
@@ -14,6 +15,13 @@ export class AddCourseAction implements Action {
 
 export class RemoveCourseAction implements Action {
   type = actionTypes.REMOVE;
+
+  constructor (public payload: string) { }
+}
+
+
+export class SearchCourseAction implements Action {
+  type = actionTypes.SEARCH;
 
   constructor (public payload: string) { }
 }

@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, Output } from "@angular/core";
+import { Subject } from "rxjs";
 
 @Component({
   selector: 'tool-bar',
@@ -6,5 +7,8 @@ import { Component } from "@angular/core";
   styleUrls: ['tool-bar.scss']
 })
 export class ToolBarComponent {
+  query: string;
 
+  @Output()
+  search = new Subject<string>();
 }
