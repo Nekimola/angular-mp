@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
 
 import { Course } from "../models/course";
-import { AddCourseAction, RemoveCourseAction, SearchCourseAction } from "../actions/courses";
+import { RemoveCourseAction, SearchCourseAction } from "../actions/courses";
 import { AppState } from "../store";
 
 @Component({
@@ -23,14 +23,6 @@ export class CoursesPageComponent implements OnInit {
 
   ngOnInit () {
     this.courses$ = this.store.select('courses');
-
-    this.store.dispatch(new AddCourseAction({
-      id: Math.random().toString(36).slice(-8),
-      title: 'Video course',
-      duration: '1h 28min',
-      description: 'Some random words random words random words random words random words',
-      date: (new Date()).getTime()
-    }));
   }
 
   onRemove (id) {

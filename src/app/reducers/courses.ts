@@ -5,15 +5,18 @@ const initialState: Course[] = [];
 
 export const coursesReducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.LOAD_COURSES_SUCCESS: {
+      return action.payload;
+    }
 
-    case actionTypes.ADD: {
+    case actionTypes.ADD_COURSE: {
       return [
         action.payload,
         ...state
       ];
     }
 
-    case actionTypes.REMOVE: {
+    case actionTypes.REMOVE_COURSE: {
       const index = state.findIndex((course) => course.id === action.payload);
       return [
         ...state.slice(0, index),
@@ -21,7 +24,7 @@ export const coursesReducer = (state = initialState, action) => {
       ];
     }
 
-    case actionTypes.SEARCH: {
+    case actionTypes.SEARCH_COURSE: {
       console.log(action.payload);
       return state;
     }

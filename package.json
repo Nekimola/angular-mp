@@ -19,6 +19,7 @@
     "@angular/platform-server": "2.4.6",
     "@angular/router": "3.4.6",
     "@ngrx/core": "^1.2.0",
+    "@ngrx/effects": "^2.0.1",
     "@ngrx/store": "^2.2.1",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
