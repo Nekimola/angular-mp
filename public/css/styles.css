@@ -1,7 +1,12 @@
-body {
+html, body, main {
+  height: 100%;
+}
+
+main {
   max-width: 1000px;
-  margin: 10px auto;
-  color: #545454;;
+  margin: 0 auto;
+  color: #545454;
+  padding-top: 10px;
 }
 
 .btn {

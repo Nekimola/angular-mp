@@ -16,6 +16,7 @@ import { CoursesEffects } from "./effects/courses";
 import { CoursesService } from "./services/courses";
 import { SpinnerComponent } from "./components/spinner/spinner.component";
 import { Ng2Bs3ModalModule } from "ng2-bs3-modal/ng2-bs3-modal";
+import { LoginPageComponent } from "./containers/login-page/login-page.component";
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { Ng2Bs3ModalModule } from "ng2-bs3-modal/ng2-bs3-modal";
   declarations: [
     AppComponent,
     CoursesPageComponent,
+    LoginPageComponent,
     SpinnerComponent
   ],
   providers: [
