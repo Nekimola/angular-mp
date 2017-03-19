@@ -12,9 +12,7 @@ import { AppState } from "../store";
   template: `    
     <section class="content">
       <tool-bar (search)="onSearch($event)"></tool-bar>
-      <img src="/public/images/spinner.gif" 
-           class="spinner" 
-           *ngIf="isLoading$ | async" alt="">
+      <spinner [show]="isLoading$ | async"></spinner>
       <courses-list [courses]="courses$ | async" (remove)="onRemove($event)"></courses-list>
     </section>
   `

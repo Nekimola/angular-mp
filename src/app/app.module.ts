@@ -14,6 +14,7 @@ import { rootReducer } from "./store";
 import { CoursesPageComponent } from "./containers/courses-page";
 import { CoursesEffects } from "./effects/courses";
 import { CoursesService } from "./services/courses";
+import { SpinnerComponent } from "./components/spinner/spinner.component";
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { CoursesService } from "./services/courses";
   ],
   declarations: [
     AppComponent,
-    CoursesPageComponent
+    CoursesPageComponent,
+    SpinnerComponent
   ],
   providers: [
     CoursesService
