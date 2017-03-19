@@ -6,15 +6,16 @@ import { EffectsModule } from "@ngrx/effects";
 import { RouterModule } from "@angular/router";
 import { routes } from "./routes";
 
-import { AppComponent } from './containers/app';
+import { AppComponent } from './containers/app.component';
 import { AppHeaderModule } from "./components/header/header.module";
 import { ToolBarModule } from "./components/tool-bar/tool-bar.module";
 import { CoursesListModule } from "./components/courses-list/courses-list.module";
 import { rootReducer } from "./store";
-import { CoursesPageComponent } from "./containers/courses-page";
+import { CoursesPageComponent } from "./containers/courses-page/courses-page.component";
 import { CoursesEffects } from "./effects/courses";
 import { CoursesService } from "./services/courses";
 import { SpinnerComponent } from "./components/spinner/spinner.component";
+import { Ng2Bs3ModalModule } from "ng2-bs3-modal/ng2-bs3-modal";
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { SpinnerComponent } from "./components/spinner/spinner.component";
     CoursesListModule,
     StoreModule.provideStore(rootReducer),
     RouterModule.forRoot(routes, { useHash: false }),
-    EffectsModule.run(CoursesEffects)
+    EffectsModule.run(CoursesEffects),
+    Ng2Bs3ModalModule
   ],
   declarations: [
     AppComponent,
