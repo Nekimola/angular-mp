@@ -5,7 +5,7 @@ import { Action } from "@ngrx/store";
 import { of } from "rxjs/observable/of";
 
 import { CoursesService } from "../services/courses";
-import { actionTypes, LoadCoursesAction, LoadCoursesSuccessAction, LoadCoursesFailAction } from "../actions/courses";
+import { actionTypes, LoadCoursesSuccessAction, LoadCoursesFailAction } from "../actions/courses";
 import { Course } from "../models/course";
 
 @Injectable()
@@ -15,7 +15,6 @@ export class CoursesEffects {
   @Effect()
   loadCourses$: Observable<Action> = this.actions$
     .ofType(actionTypes.LOAD_COURSES)
-    .startWith(new LoadCoursesAction())
     .switchMap(() => {
       return this.coursesSrv.load()
         .map((courses: Course[]) => new LoadCoursesSuccessAction(courses))

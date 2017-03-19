@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
 
 import { Course } from "../models/course";
-import { RemoveCourseAction, SearchCourseAction } from "../actions/courses";
+import { RemoveCourseAction, SearchCourseAction, LoadCoursesAction } from "../actions/courses";
 import { AppState } from "../store";
 
 @Component({
@@ -22,7 +22,8 @@ export class CoursesPageComponent implements OnInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit () {
-    this.courses$ = this.store.select('courses');
+    this.store.dispatch(new LoadCoursesAction());
+    this.courses$ = this.store.select(appState => appState.courses.entities);
   }
 
   onRemove (id) {

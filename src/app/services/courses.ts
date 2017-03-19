@@ -29,6 +29,7 @@ export class CoursesService {
   ];
 
   load (): Observable<Course[]> {
-    return of(this.courses);
+    return of(this.courses)
+      .delay(1000);
   }
 }
