@@ -1,9 +1,10 @@
-import { compose } from "@ngrx/core/compose";
+import { compose} from "@ngrx/core/compose";
 import { ActionReducer, combineReducers } from "@ngrx/store";
 import { storeFreeze } from "ngrx-store-freeze";
 
 import { coursesReducer, CoursesState } from "./reducers/courses"
 import { AuthState, authReducer } from "./reducers/auth";
+import { localStorageSync } from "ngrx-store-localstorage";
 
 export interface AppState {
   courses: CoursesState,
@@ -15,8 +16,8 @@ const reducers = {
   auth: authReducer
 };
 
-const developmentReducer: ActionReducer<AppState> = compose(storeFreeze, combineReducers)(reducers);
-const productionReducer: ActionReducer<AppState> = combineReducers(reducers);
+const developmentReducer: ActionReducer<AppState> = compose(storeFreeze, localStorageSync([{auth: ['user']}], true), combineReducers)(reducers);
+const productionReducer: ActionReducer<AppState> = compose(localStorageSync([{auth: ['user']}], true), combineReducers)(reducers);
 
 export function rootReducer(state: any, action: any) {
   if (process.env.ENV === 'production') {

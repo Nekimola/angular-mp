@@ -26,6 +26,12 @@ export const authReducer = (state = initialState, action) => {
       });
     }
 
+    case actionTypes.LOGOUT: {
+      return Object.assign({}, state, {
+        user: null
+      });
+    }
+
     default: {
       return state;
     }

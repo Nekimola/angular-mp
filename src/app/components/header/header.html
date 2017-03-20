@@ -9,6 +9,6 @@
   
   <div class="right-side">
     <a routerLink="/login">user login</a>
-    <a href="#">logoff</a>
+    <a href="#" (click)="$event.preventDefault(); logout.next()">logoff</a>
   </div>
 </header>
