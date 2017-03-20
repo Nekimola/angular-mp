@@ -4,14 +4,16 @@
       <img src="https://angular.io/resources/images/logos/angular2/angular.svg" alt="">
     </a>
     <h1>Courses</h1>
-    <button class="btn">Courses</button>
+    <button class="btn" *ngIf="!isLoginPage">Courses</button>
   </div>
   
-  <div class="right-side" *ngIf="!user">
-    <a routerLink="/login">user login</a>
-  </div>
-  <div class="right-side" *ngIf="user">
-    <span>{{user.username}}</span>
-    <a href="#" (click)="$event.preventDefault(); logout.next()">logoff</a>
-  </div>
+  <section *ngIf="!isLoginPage">
+    <div class="right-side" *ngIf="!user">
+      <a routerLink="/login">user login</a>
+    </div>
+    <div class="right-side" *ngIf="user">
+      <span>{{user.username}}</span>
+      <a href="#" (click)="$event.preventDefault(); logout.next()">logoff</a>
+    </div>
+  </section>
 </header>

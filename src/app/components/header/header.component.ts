@@ -11,6 +11,9 @@ export class AppHeader {
   @Input()
   user: User;
 
+  @Input()
+  isLoginPage: boolean;
+
   @Output()
   logout = new Subject();
 }
