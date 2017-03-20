@@ -1,7 +1,9 @@
 <section class="content">
   <tool-bar (search)="onSearch($event)"></tool-bar>
   <spinner [show]="isLoading$ | async"></spinner>
-  <courses-list [courses]="courses$ | async" (remove)="onRemove($event)"></courses-list>
+  <courses-list *ngIf="!(isLoading$ | async)"
+                [courses]="courses$ | async"
+                (remove)="onRemove($event)"></courses-list>
 </section>
 
 <modal #confirmModal

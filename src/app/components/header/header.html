@@ -7,8 +7,11 @@
     <button class="btn">Courses</button>
   </div>
   
-  <div class="right-side">
+  <div class="right-side" *ngIf="!user">
     <a routerLink="/login">user login</a>
+  </div>
+  <div class="right-side" *ngIf="user">
+    <span>{{user.username}}</span>
     <a href="#" (click)="$event.preventDefault(); logout.next()">logoff</a>
   </div>
 </header>

@@ -39,3 +39,5 @@ export const authReducer = (state = initialState, action) => {
 };
 
 export const isUserLoggedIn = (state) => !!state.auth.user;
+
+export const getUser = (state) => state.auth.user;
