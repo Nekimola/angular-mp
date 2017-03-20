@@ -19,6 +19,7 @@ import { Ng2Bs3ModalModule } from "ng2-bs3-modal/ng2-bs3-modal";
 import { LoginPageComponent } from "./containers/login-page/login-page.component";
 import { AuthEffects } from "./effects/auth";
 import { AuthService } from "./services/auth";
+import { IsLoggedInGuard } from "./guards/is-logged-in";
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { AuthService } from "./services/auth";
   ],
   providers: [
     CoursesService,
-    AuthService
+    AuthService,
+    IsLoggedInGuard
   ],
   bootstrap: [ AppComponent ]
 })

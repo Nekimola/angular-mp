@@ -8,10 +8,15 @@ import { actionTypes } from "../actions/auth";
 import { AuthService } from "../services/auth";
 import { LoginSuccessAction, LoginFailAction } from "../actions/auth";
 import { User } from "../models/user";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class AuthEffects {
-  constructor (private actions$: Actions, private authSrv: AuthService) {}
+  constructor (
+    private actions$: Actions,
+    private authSrv: AuthService,
+    private router: Router
+  ) {}
 
   @Effect()
   login$: Observable<Action> = this.actions$
@@ -21,4 +26,9 @@ export class AuthEffects {
         .map((user: User) => new LoginSuccessAction(user))
         .catch((error: any) => of(new LoginFailAction(error)));
     });
+
+  @Effect({dispatch: false})
+  loginSuccess$: Observable<Action> = this.actions$
+    .ofType(actionTypes.LOGIN_SUCCESS)
+    .do(() => this.router.navigate(['/']));
 }

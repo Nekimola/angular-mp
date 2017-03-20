@@ -37,3 +37,5 @@ export const authReducer = (state = initialState, action) => {
     }
   }
 };
+
+export const isUserLoggedIn = (state) => !!state.auth.user;
