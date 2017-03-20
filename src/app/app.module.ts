@@ -17,6 +17,8 @@ import { CoursesService } from "./services/courses";
 import { SpinnerComponent } from "./components/spinner/spinner.component";
 import { Ng2Bs3ModalModule } from "ng2-bs3-modal/ng2-bs3-modal";
 import { LoginPageComponent } from "./containers/login-page/login-page.component";
+import { AuthEffects } from "./effects/auth";
+import { AuthService } from "./services/auth";
 
 @NgModule({
   imports: [
@@ -28,6 +30,7 @@ import { LoginPageComponent } from "./containers/login-page/login-page.component
     StoreModule.provideStore(rootReducer),
     RouterModule.forRoot(routes, { useHash: false }),
     EffectsModule.run(CoursesEffects),
+    EffectsModule.run(AuthEffects),
     Ng2Bs3ModalModule
   ],
   declarations: [
@@ -37,7 +40,8 @@ import { LoginPageComponent } from "./containers/login-page/login-page.component
     SpinnerComponent
   ],
   providers: [
-    CoursesService
+    CoursesService,
+    AuthService
   ],
   bootstrap: [ AppComponent ]
 })

@@ -3,13 +3,16 @@ import { ActionReducer, combineReducers } from "@ngrx/store";
 import { storeFreeze } from "ngrx-store-freeze";
 
 import { coursesReducer, CoursesState } from "./reducers/courses"
+import { AuthState, authReducer } from "./reducers/auth";
 
 export interface AppState {
-  courses: CoursesState
+  courses: CoursesState,
+  auth: AuthState
 }
 
 const reducers = {
-  courses: coursesReducer
+  courses: coursesReducer,
+  auth: authReducer
 };
 
 const developmentReducer: ActionReducer<AppState> = compose(storeFreeze, combineReducers)(reducers);
