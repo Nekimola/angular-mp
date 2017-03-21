@@ -3,7 +3,7 @@ import { of } from "rxjs/observable/of";
 import { Observable } from "rxjs";
 
 import { User } from "../models/user";
-import { LoginFormModel } from "../containers/login-page/login-page.component";
+import { LoginFormModel } from "../models/login-form";
 
 @Injectable()
 export class AuthService {

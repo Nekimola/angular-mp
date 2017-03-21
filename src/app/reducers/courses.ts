@@ -53,3 +53,6 @@ export const coursesReducer = (state = initialState, action) => {
     }
   }
 };
+
+export const getCourses = (appState) => appState.courses.entities;
+export const getCoursesLoading = (appState) => appState.courses.loading;

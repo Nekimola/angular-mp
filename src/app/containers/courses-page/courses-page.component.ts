@@ -6,6 +6,7 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { Course } from "../../models/course";
 import { RemoveCourseAction, SearchCourseAction, LoadCoursesAction } from "../../actions/courses";
 import { AppState } from "../../store";
+import { getCourses, getCoursesLoading } from "../../reducers/courses";
 
 
 @Component({
@@ -26,8 +27,8 @@ export class CoursesPageComponent implements OnInit {
 
   ngOnInit () {
     this.store.dispatch(new LoadCoursesAction());
-    this.courses$ = this.store.select(appState => appState.courses.entities);
-    this.isLoading$ = this.store.select(appState => appState.courses.loading);
+    this.courses$ = this.store.select(getCourses);
+    this.isLoading$ = this.store.select(getCoursesLoading);
   }
 
   onRemove (id: string) {

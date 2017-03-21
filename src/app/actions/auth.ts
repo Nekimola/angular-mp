@@ -1,6 +1,6 @@
 import { Action } from "@ngrx/store";
 import { User } from "../models/user";
-import { LoginFormModel } from "../containers/login-page/login-page.component";
+import { LoginFormModel } from "../models/login-form";
 
 export const actionTypes = {
   LOGIN: 'LOGIN',

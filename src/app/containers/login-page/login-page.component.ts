@@ -1,12 +1,9 @@
 import { Component } from "@angular/core";
 import { Store } from "@ngrx/store";
+
 import { AppState } from "../../store";
 import { LoginAction } from "../../actions/auth";
-
-export interface LoginFormModel {
-  login: string,
-  password: string
-}
+import { LoginFormModel } from "../../models/login-form";
 
 @Component({
   selector: 'login-page',
