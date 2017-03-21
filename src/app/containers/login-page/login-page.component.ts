@@ -7,18 +7,16 @@ import { LoginFormModel } from "../../models/login-form";
 
 @Component({
   selector: 'login-page',
-  templateUrl: './login-page.html',
-  styleUrls: ['./login-page.scss']
+  template: `
+    <section class="content">
+      <login-form (submit)="onSubmit($event)"></login-form>
+    </section>
+  `
 })
 export class LoginPageComponent {
-  user: LoginFormModel = {
-    login: '',
-    password: ''
-  };
-
   constructor (private store: Store<AppState>) {}
 
-  onSubmit () {
-    this.store.dispatch(new LoginAction(this.user));
+  onSubmit (user: LoginFormModel) {
+    this.store.dispatch(new LoginAction(user));
   }
 }

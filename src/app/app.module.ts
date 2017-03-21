@@ -20,6 +20,7 @@ import { LoginPageComponent } from "./containers/login-page/login-page.component
 import { AuthEffects } from "./effects/auth";
 import { AuthService } from "./services/auth";
 import { IsLoggedInGuard } from "./guards/is-logged-in";
+import { LoginFormComponent } from "./components/login-form/login-form.component";
 
 @NgModule({
   imports: [
@@ -38,6 +39,7 @@ import { IsLoggedInGuard } from "./guards/is-logged-in";
     AppComponent,
     CoursesPageComponent,
     LoginPageComponent,
+    LoginFormComponent,
     SpinnerComponent
   ],
   providers: [
