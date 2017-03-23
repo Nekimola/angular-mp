@@ -1,18 +1,16 @@
 <div class="action-holder">
   <form class="form-inline" >
     <div class="form-group">
-      <div class="input-group">
-        <input type="text"
-               autoComplete="off"
-               class="form-control"
-               id="exampleInputAmount"
-               placeholder="Name fragment or date"
-               [(ngModel)]="query"
-               [ngModelOptions]="{standalone: true}"/>
-        <div class="input-group-addon">
-          <button type="button" class="btn" (click)="search.next(query)" >Find</button>
-        </div>
-      </div>
+      <input type="text"
+             autoComplete="off"
+             class="form-control"
+             id="exampleInputAmount"
+             placeholder="Name fragment or date"
+             [(ngModel)]="query"
+             [ngModelOptions]="{standalone: true}"/>
+      <button type="button"
+              class="btn search-btn"
+              (click)="search.next(query)">Search</button>
     </div>
   </form>
   

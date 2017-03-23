@@ -9,11 +9,12 @@
   
   <section *ngIf="!isLoginPage">
     <div class="right-side" *ngIf="!user">
-      <a routerLink="/login">user login</a>
+      <a routerLink="/login" class="auth-link">Sign in</a>
     </div>
     <div class="right-side" *ngIf="user">
-      <span>{{user.username}}</span>
-      <a href="#" (click)="$event.preventDefault(); logout.next()">logoff</a>
+      <span class="username">Hey, {{user.username}}</span>
+      <a href="#" class="auth-link"
+         (click)="$event.preventDefault(); logout.next()">Logout</a>
     </div>
   </section>
 </header>
