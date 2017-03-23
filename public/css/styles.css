@@ -28,7 +28,6 @@ main {
 
 .btn:hover {
   box-shadow: 2px 4px 8px 0px rgba(46,61,73,0.2);
-  /*background-color: #02b7e9;*/
   color: gray;
 }
 

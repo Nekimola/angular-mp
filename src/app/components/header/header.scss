@@ -34,7 +34,8 @@ header {
     text-decoration: none;
     color: grey;
     cursor: pointer;
-    
+    transition: all 0.3s ease;
+
     &:hover {
       color: #545454;
     }
