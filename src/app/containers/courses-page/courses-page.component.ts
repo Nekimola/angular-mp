@@ -1,5 +1,5 @@
-import { Component, ChangeDetectionStrategy, OnInit, ViewChild } from "@angular/core";
-import { Observable } from "rxjs";
+import { Component, ChangeDetectionStrategy, OnInit, ViewChild, OnDestroy } from "@angular/core";
+import { Observable, Subscription } from "rxjs";
 import { Store } from "@ngrx/store";
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 
@@ -13,7 +13,7 @@ import { getCourses, getCoursesLoading, getCoursesLoaded } from "../../reducers/
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './courses-page.html'
 })
-export class CoursesPageComponent implements OnInit {
+export class CoursesPageComponent implements OnInit, OnDestroy {
   courses$: Observable<Course[]>;
   isLoading$: Observable<boolean>;
 
@@ -21,11 +21,13 @@ export class CoursesPageComponent implements OnInit {
   modal: ModalComponent;
 
   courseIdToRemove: string;
+  coursesLoadedSubscription: Subscription;
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit () {
-    this.store.select(getCoursesLoaded)
+    this.coursesLoadedSubscription = this.store
+      .select(getCoursesLoaded)
       .subscribe((isLoaded) => !isLoaded && this.store.dispatch(new LoadCoursesAction()));
     this.courses$ = this.store.select(getCourses);
     this.isLoading$ = this.store.select(getCoursesLoading);
@@ -43,5 +45,9 @@ export class CoursesPageComponent implements OnInit {
 
   onSearch (query: string) {
     this.store.dispatch(new SearchCourseAction(query));
+  }
+
+  ngOnDestroy () {
+    this.coursesLoadedSubscription.unsubscribe();
   }
 }
