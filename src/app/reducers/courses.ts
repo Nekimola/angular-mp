@@ -5,11 +5,13 @@ import { Action } from "@ngrx/store";
 
 export interface CoursesState  {
   loading: boolean,
+  loaded: boolean,
   entities: Course[]
 }
 
 const initialState: CoursesState = {
   loading: false,
+  loaded: false,
   entities: []
 };
 
@@ -25,7 +27,8 @@ export const coursesReducer = (state = initialState, action: Action) => {
     case actionTypes.LOAD_COURSES_SUCCESS: {
       return Object.assign({}, state, {
         entities: action.payload,
-        loading: false
+        loading: false,
+        loaded: true
       });
     }
 
@@ -53,3 +56,4 @@ export const coursesReducer = (state = initialState, action: Action) => {
 
 export const getCourses = (appState: AppState) => appState.courses.entities;
 export const getCoursesLoading = (appState: AppState) => appState.courses.loading;
+export const getCoursesLoaded = (appState: AppState) => appState.courses.loaded;

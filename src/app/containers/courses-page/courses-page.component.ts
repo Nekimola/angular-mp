@@ -6,7 +6,7 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { Course } from "../../models/course";
 import { RemoveCourseAction, SearchCourseAction, LoadCoursesAction } from "../../actions/courses";
 import { AppState } from "../../store";
-import { getCourses, getCoursesLoading } from "../../reducers/courses";
+import { getCourses, getCoursesLoading, getCoursesLoaded } from "../../reducers/courses";
 
 @Component({
   selector: 'courses-page',
@@ -25,7 +25,8 @@ export class CoursesPageComponent implements OnInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit () {
-    this.store.dispatch(new LoadCoursesAction());
+    this.store.select(getCoursesLoaded)
+      .subscribe((isLoaded) => !isLoaded && this.store.dispatch(new LoadCoursesAction()));
     this.courses$ = this.store.select(getCourses);
     this.isLoading$ = this.store.select(getCoursesLoading);
   }
