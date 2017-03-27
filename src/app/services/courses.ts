@@ -35,6 +35,6 @@ export class CoursesService {
 
   remove (id: string) {
     return of({})
-      .delay(1000);
+      .delay(500);
   }
 }

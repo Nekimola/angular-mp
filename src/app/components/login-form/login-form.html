@@ -9,7 +9,8 @@
              id="inputEmail3"
              placeholder="Login"
              name="login"
-             [(ngModel)]="user.login">
+             [(ngModel)]="user.login"
+             [disabled]="inProgress">
     </div>
   </div>
   <div class="form-group">
@@ -21,12 +22,15 @@
              id="inputPassword3"
              placeholder="Password"
              name="password"
-             [(ngModel)]="user.password" >
+             [(ngModel)]="user.password"
+             [disabled]="inProgress">
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-9">
-      <button type="submit" class="btn btn-default">Sign in</button>
+      <button type="submit"
+              class="btn btn-default"
+              [disabled]="inProgress">Sign in</button>
       <spinner [show]="inProgress"></spinner>
     </div>
   </div>
