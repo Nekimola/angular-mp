@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, NgZone } from '@angular/core';
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { of } from "rxjs/observable/of";
@@ -31,13 +31,24 @@ export class AppComponent implements OnInit {
 
   constructor (
     private store: Store<AppState>,
-    private router: Router
+    private router: Router,
+    private zone: NgZone
   ) {}
 
   ngOnInit () {
     this.user$ = this.store.select(getUser);
     this.isLoginPage$ = this.router.events
       .map(getIsLoginPage);
+
+    this.zone.onUnstable
+      .subscribe(() => {
+        console.time('app:renderTime')
+      });
+
+    this.zone.onStable
+      .subscribe(() => {
+        console.timeEnd('app:renderTime');
+      });
   }
 
   onLogout () {
