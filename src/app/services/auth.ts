@@ -10,6 +10,7 @@ export class AuthService {
   apiUrl: string = '';
 
   login (data: LoginFormModel): Observable<User> {
-    return of({ username: data.login });
+    return of({ username: data.login })
+      .delay(1000);
   }
 }

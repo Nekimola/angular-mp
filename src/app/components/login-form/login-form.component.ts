@@ -1,4 +1,4 @@
-import { Component, Output, ChangeDetectionStrategy } from "@angular/core";
+import { Component, Output, ChangeDetectionStrategy, Input } from "@angular/core";
 import { Subject } from "rxjs";
 
 import { LoginFormModel } from "../../models/login-form";
@@ -14,6 +14,9 @@ export class LoginFormComponent {
     login: '',
     password: ''
   };
+
+  @Input()
+  inProgress: boolean;
 
   @Output()
   submit = new Subject<LoginFormModel>();
