@@ -8,7 +8,6 @@ import { RemoveCourseAction, SearchCourseAction, LoadCoursesAction } from "../..
 import { AppState } from "../../store";
 import { getCourses, getCoursesLoading } from "../../reducers/courses";
 
-
 @Component({
   selector: 'courses-page',
   changeDetection: ChangeDetectionStrategy.OnPush,

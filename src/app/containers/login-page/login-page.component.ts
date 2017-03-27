@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { Store } from "@ngrx/store";
 
 import { AppState } from "../../store";
@@ -7,6 +7,7 @@ import { LoginFormModel } from "../../models/login-form";
 
 @Component({
   selector: 'login-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="content">
       <login-form (submit)="onSubmit($event)"></login-form>

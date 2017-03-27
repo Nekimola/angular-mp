@@ -32,4 +32,9 @@ export class CoursesService {
     return of(this.courses)
       .delay(1000);
   }
+
+  remove (id: string) {
+    return of({})
+      .delay(1000);
+  }
 }

@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
+import { Router, NavigationEnd } from "@angular/router";
 
 import '../../../public/css/styles.css';
 import { AppState } from "../store";
 import { LogoutAction } from "../actions/auth";
 import { User } from "../models/user";
 import { getUser } from "../reducers/auth";
-import { Router, NavigationEnd } from "@angular/router";
 
 @Component({
   selector: 'courses-app',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <main>
       <app-header (logout)="onLogout()"

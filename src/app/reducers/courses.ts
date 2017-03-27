@@ -15,6 +15,7 @@ const initialState: CoursesState = {
 
 export const coursesReducer = (state = initialState, action: Action) => {
   switch (action.type) {
+    case actionTypes.REMOVE_COURSE:
     case actionTypes.LOAD_COURSES: {
       return Object.assign({}, state, {
         loading: true
@@ -28,16 +29,10 @@ export const coursesReducer = (state = initialState, action: Action) => {
       });
     }
 
-    // case actionTypes.ADD_COURSE: {
-    //   return [
-    //     action.payload,
-    //     ...state
-    //   ];
-    // }
-
-    case actionTypes.REMOVE_COURSE: {
+    case actionTypes.REMOVE_COURSE_SUCCESS: {
       const index = state.entities.findIndex((course) => course.id === action.payload);
       return Object.assign({}, state, {
+        loading: false,
         entities: [
           ...state.entities.slice(0, index),
           ...state.entities.slice(index + 1)

@@ -42,6 +42,17 @@ export class RemoveCourseAction implements Action {
   constructor (public payload: string) { }
 }
 
+export class RemoveCourseSuccessAction implements Action {
+  type = actionTypes.REMOVE_COURSE_SUCCESS;
+
+  constructor (public payload: string) { }
+}
+
+export class RemoveCourseFailAction implements Action {
+  type = actionTypes.REMOVE_COURSE_FAIL;
+
+  constructor (public payload: any) { }
+}
 
 export class SearchCourseAction implements Action {
   type = actionTypes.SEARCH_COURSE;

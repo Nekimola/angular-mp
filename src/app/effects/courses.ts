@@ -5,7 +5,13 @@ import { Action } from "@ngrx/store";
 import { of } from "rxjs/observable/of";
 
 import { CoursesService } from "../services/courses";
-import { actionTypes, LoadCoursesSuccessAction, LoadCoursesFailAction } from "../actions/courses";
+import {
+  actionTypes,
+  LoadCoursesSuccessAction,
+  LoadCoursesFailAction,
+  RemoveCourseSuccessAction,
+  RemoveCourseFailAction
+} from "../actions/courses";
 import { Course } from "../models/course";
 
 @Injectable()
@@ -19,5 +25,14 @@ export class CoursesEffects {
       return this.coursesSrv.load()
         .map((courses: Course[]) => new LoadCoursesSuccessAction(courses))
         .catch((error) => of(new LoadCoursesFailAction(error)));
+    });
+
+  @Effect()
+  removeCourse$: Observable<Action> = this.actions$
+    .ofType(actionTypes.REMOVE_COURSE)
+    .switchMap((action) => {
+      return this.coursesSrv.remove(action.payload)
+        .map(() => new RemoveCourseSuccessAction(action.payload))
+        .catch((error) => of(new RemoveCourseFailAction(error)));
     });
 }
