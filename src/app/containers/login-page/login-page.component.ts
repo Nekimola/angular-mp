@@ -13,17 +13,17 @@ import { getLoginProgress } from "../../reducers/auth";
   template: `
     <section class="content">
       <login-form (submit)="onSubmit($event)"
-                  [inProgress]="isProgress$ | async"></login-form>
+                  [inProgress]="inProgress$ | async"></login-form>
     </section>
   `
 })
 export class LoginPageComponent implements OnInit {
-  isProgress$: Observable<boolean>;
+  inProgress$: Observable<boolean>;
 
   constructor (private store: Store<AppState>) {}
 
   ngOnInit () {
-    this.isProgress$ = this.store.select(getLoginProgress);
+    this.inProgress$ = this.store.select(getLoginProgress);
   }
 
   onSubmit (user: LoginFormModel) {
