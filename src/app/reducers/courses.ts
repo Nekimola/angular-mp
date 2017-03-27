@@ -1,7 +1,9 @@
 import { Course } from "../models/course";
 import { actionTypes } from "../actions/courses";
+import { AppState } from "../store";
+import { Action } from "@ngrx/store";
 
-export interface CoursesState {
+export interface CoursesState  {
   loading: boolean,
   entities: Course[]
 }
@@ -11,18 +13,18 @@ const initialState: CoursesState = {
   entities: []
 };
 
-export const coursesReducer = (state = initialState, action) => {
+export const coursesReducer = (state = initialState, action: Action) => {
   switch (action.type) {
+    case actionTypes.LOAD_COURSES: {
+      return Object.assign({}, state, {
+        loading: true
+      });
+    }
+
     case actionTypes.LOAD_COURSES_SUCCESS: {
       return Object.assign({}, state, {
         entities: action.payload,
         loading: false
-      });
-    }
-
-    case actionTypes.LOAD_COURSES: {
-      return Object.assign({}, state, {
-        loading: true
       });
     }
 
@@ -54,5 +56,5 @@ export const coursesReducer = (state = initialState, action) => {
   }
 };
 
-export const getCourses = (appState) => appState.courses.entities;
-export const getCoursesLoading = (appState) => appState.courses.loading;
+export const getCourses = (appState: AppState) => appState.courses.entities;
+export const getCoursesLoading = (appState: AppState) => appState.courses.loading;

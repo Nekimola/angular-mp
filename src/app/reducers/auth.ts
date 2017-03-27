@@ -1,5 +1,7 @@
 import { actionTypes } from "../actions/auth";
 import { User } from "../models/user";
+import { AppState } from "../store";
+import { Action } from "@ngrx/store";
 
 export interface AuthState {
   loading: boolean,
@@ -11,7 +13,7 @@ const initialState: AuthState = {
   user: null
 };
 
-export const authReducer = (state = initialState, action) => {
+export const authReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case actionTypes.LOGIN: {
       return Object.assign({}, state, {
@@ -38,6 +40,6 @@ export const authReducer = (state = initialState, action) => {
   }
 };
 
-export const isUserLoggedIn = (state) => !!state.auth.user;
+export const isUserLoggedIn = (state: AppState) => !!state.auth.user;
 
-export const getUser = (state) => state.auth.user;
+export const getUser = (state: AppState) => state.auth.user;

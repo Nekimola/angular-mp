@@ -41,7 +41,7 @@ export class CoursesPageComponent implements OnInit {
     this.courseIdToRemove = '';
   }
 
-  onSearch (query) {
+  onSearch (query: string) {
     this.store.dispatch(new SearchCourseAction(query));
   }
 }
