@@ -57,3 +57,4 @@ export const coursesReducer = (state = initialState, action: Action) => {
 export const getCourses = (appState: AppState) => appState.courses.entities;
 export const getCoursesLoading = (appState: AppState) => appState.courses.loading;
 export const getCoursesLoaded = (appState: AppState) => appState.courses.loaded;
+export const getNoData = (appState: AppState) => !appState.courses.entities.length && !appState.courses.loading;

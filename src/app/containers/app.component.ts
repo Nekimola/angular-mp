@@ -31,24 +31,13 @@ export class AppComponent implements OnInit {
 
   constructor (
     private store: Store<AppState>,
-    private router: Router,
-    private zone: NgZone
+    private router: Router
   ) {}
 
   ngOnInit () {
     this.user$ = this.store.select(getUser);
     this.isLoginPage$ = this.router.events
       .map(getIsLoginPage);
-
-    this.zone.onUnstable
-      .subscribe(() => {
-        console.time('app:renderTime')
-      });
-
-    this.zone.onStable
-      .subscribe(() => {
-        console.timeEnd('app:renderTime');
-      });
   }
 
   onLogout () {

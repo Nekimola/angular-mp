@@ -4,6 +4,8 @@
   <courses-list *ngIf="!(isLoading$ | async)"
                 [courses]="courses$ | async"
                 (remove)="onRemove($event)"></courses-list>
+  <div class="no-data"
+       *ngIf="isNoData$ | async">No data. Feel free to add a new course.</div>
 </section>
 
 <modal #confirmModal
