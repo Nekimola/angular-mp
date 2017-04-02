@@ -3,6 +3,7 @@
     <div class="course-header">
       <h3>{{course.title}}</h3>
       <span>{{course.duration}}</span>
+      <i class="fa fa-star" *ngIf="course.topRated"></i>
       <time>{{course.date | date}}</time>
     </div>
     <div class="course-description">
