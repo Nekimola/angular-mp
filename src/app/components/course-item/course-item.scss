@@ -5,6 +5,14 @@
   background-color: #FFF;
   box-shadow: 2px 7px 18px -12px grey;
 
+  &.new {
+    border: 1px solid #4bddcf;
+  }
+
+  &.upcoming {
+    border: 1px solid #4abedb;
+  }
+
   .course-details {
     width: 80%;
     padding: 0 10px 0 0;

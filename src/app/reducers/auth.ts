@@ -41,7 +41,5 @@ export const authReducer = (state = initialState, action: Action) => {
 };
 
 export const isUserLoggedIn = (state: AppState) => !!state.auth.user;
-
 export const getUser = (state: AppState) => state.auth.user;
-
 export const getLoginProgress = (state: AppState) => state.auth.progress;

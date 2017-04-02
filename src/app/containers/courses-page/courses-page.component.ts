@@ -4,8 +4,8 @@ import { Store } from "@ngrx/store";
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 import { Course } from "../../models/course";
-import { RemoveCourseAction, SearchCourseAction, LoadCoursesAction } from "../../actions/courses";
 import { AppState } from "../../store";
+import { RemoveCourseAction, SearchCourseAction, LoadCoursesAction } from "../../actions/courses";
 import { getCourses, getCoursesLoading, getCoursesLoaded, getNoData } from "../../reducers/courses";
 
 @Component({
@@ -28,8 +28,7 @@ export class CoursesPageComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit () {
-    this.coursesLoadedSubscription = this.store
-      .select(getCoursesLoaded)
+    this.coursesLoadedSubscription = this.store.select(getCoursesLoaded)
       .subscribe((isLoaded) => !isLoaded && this.store.dispatch(new LoadCoursesAction()));
     this.courses$ = this.store.select(getCourses);
     this.isLoading$ = this.store.select(getCoursesLoading);
