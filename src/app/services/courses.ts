@@ -10,21 +10,21 @@ export class CoursesService {
     {
       id: Math.random().toString(36).slice(-8),
       title: 'Video course 1 (new)',
-      duration: '1h 28min',
+      duration: 75,
       description: 'Some random words random words random words random words random words',
       topRated: false,
       date: 1490641575025
     }, {
       id: Math.random().toString(36).slice(-8),
       title: 'Video course 2',
-      duration: '2h 12min',
+      duration: 34,
       description: 'Some random words random words random words random words random words',
       topRated: true,
       date: 1489864010471
     }, {
       id: Math.random().toString(36).slice(-8),
       title: 'Video course 3 (upcoming)',
-      duration: '0h 2min',
+      duration: 156,
       description: 'Some random words random words random words random words random words',
       topRated: false,
       date: 1492456039363
