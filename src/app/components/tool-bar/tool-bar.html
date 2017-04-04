@@ -1,5 +1,6 @@
 <div class="action-holder">
-  <form class="form-inline" >
+  <form class="form-inline"
+        (submit)="search.next(query)">
     <div class="form-group">
       <input type="text"
              autoComplete="off"
@@ -8,9 +9,8 @@
              placeholder="Name fragment or date"
              [(ngModel)]="query"
              [ngModelOptions]="{standalone: true}"/>
-      <button type="button"
-              class="btn search-btn"
-              (click)="search.next(query)">Search</button>
+      <button type="submit"
+              class="btn search-btn">Search</button>
     </div>
   </form>
   

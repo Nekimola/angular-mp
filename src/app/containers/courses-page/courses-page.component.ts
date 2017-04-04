@@ -6,7 +6,9 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { Course } from "../../models/course";
 import { AppState } from "../../store";
 import { RemoveCourseAction, SearchCourseAction, LoadCoursesAction } from "../../actions/courses";
-import { getCourses, getCoursesLoading, getCoursesLoaded, getNoData } from "../../reducers/courses";
+import { getCourses, getCoursesLoading, getCoursesLoaded, getNoData, getSearchQuery } from "../../reducers/courses";
+
+const filterCourses = (courses: Course[], searchQuery: string) => courses.filter(course => course.title.toLowerCase().indexOf(searchQuery) !== -1);
 
 @Component({
   selector: 'courses-page',
@@ -15,9 +17,10 @@ import { getCourses, getCoursesLoading, getCoursesLoaded, getNoData } from "../.
   styleUrls: ['./courses-page.scss']
 })
 export class CoursesPageComponent implements OnInit, OnDestroy {
-  courses$: Observable<Course[]>;
+  courses$: any;
   isLoading$: Observable<boolean>;
   isNoData$: Observable<boolean>;
+  searchQuery$: Observable<string>;
 
   @ViewChild('confirmModal')
   modal: ModalComponent;
@@ -30,7 +33,9 @@ export class CoursesPageComponent implements OnInit, OnDestroy {
   ngOnInit () {
     this.coursesLoadedSubscription = this.store.select(getCoursesLoaded)
       .subscribe((isLoaded) => !isLoaded && this.store.dispatch(new LoadCoursesAction()));
-    this.courses$ = this.store.select(getCourses);
+    this.searchQuery$ = this.store.select(getSearchQuery);
+    this.courses$ = this.store.select(getCourses)
+      .combineLatest(this.searchQuery$, filterCourses);
     this.isLoading$ = this.store.select(getCoursesLoading);
     this.isNoData$ = this.store.select(getNoData);
   }

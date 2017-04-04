@@ -1,17 +1,20 @@
+import { Action } from "@ngrx/store";
+
 import { Course } from "../models/course";
 import { actionTypes } from "../actions/courses";
 import { AppState } from "../store";
-import { Action } from "@ngrx/store";
 
 export interface CoursesState  {
   loading: boolean,
   loaded: boolean,
+  searchQuery: string,
   entities: Course[]
 }
 
 const initialState: CoursesState = {
   loading: false,
   loaded: false,
+  searchQuery: '',
   entities: []
 };
 
@@ -44,8 +47,9 @@ export const coursesReducer = (state = initialState, action: Action) => {
     }
 
     case actionTypes.SEARCH_COURSE: {
-      console.log(action.payload);
-      return state;
+      return Object.assign({}, state, {
+        searchQuery: action.payload
+      });
     }
 
     default: {
@@ -57,4 +61,5 @@ export const coursesReducer = (state = initialState, action: Action) => {
 export const getCourses = (appState: AppState) => appState.courses.entities;
 export const getCoursesLoading = (appState: AppState) => appState.courses.loading;
 export const getCoursesLoaded = (appState: AppState) => appState.courses.loaded;
+export const getSearchQuery = (appState: AppState) => appState.courses.searchQuery;
 export const getNoData = (appState: AppState) => !appState.courses.entities.length && !appState.courses.loading;
