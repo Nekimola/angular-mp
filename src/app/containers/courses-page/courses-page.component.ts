@@ -17,7 +17,7 @@ const filterCourses = (courses: Course[], searchQuery: string) => courses.filter
   styleUrls: ['./courses-page.scss']
 })
 export class CoursesPageComponent implements OnInit, OnDestroy {
-  courses$: any;
+  courses$: Observable<Course[]>;
   isLoading$: Observable<boolean>;
   isNoData$: Observable<boolean>;
   searchQuery$: Observable<string>;
