@@ -6,28 +6,31 @@ import { Course } from "../models/course";
 
 @Injectable()
 export class CoursesService {
-  courses: Course[] = [
+  courses = [
     {
       id: Math.random().toString(36).slice(-8),
       title: 'Video course 1 (new)',
       duration: 75,
       description: 'Some random words random words random words random words random words',
       topRated: false,
-      date: 1490641575025
+      date: 1490641575025,
+      someField: 'asd'
     }, {
       id: Math.random().toString(36).slice(-8),
       title: 'Video course 2',
       duration: 34,
       description: 'Some random words random words random words random words random words',
       topRated: true,
-      date: 1489864010471
+      date: 1489864010471,
+      someField: 'asd'
     }, {
       id: Math.random().toString(36).slice(-8),
       title: 'Video course 3 (upcoming)',
       duration: 156,
       description: 'Some random words random words random words random words random words',
       topRated: false,
-      date: 1492456039363
+      date: 1492456039363,
+      someField: 'asd'
     }
   ];
 

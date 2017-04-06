@@ -6,7 +6,13 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { Course } from "../../models/course";
 import { AppState } from "../../store";
 import { RemoveCourseAction, SearchCourseAction, LoadCoursesAction } from "../../actions/courses";
-import { getCourses, getCoursesLoading, getCoursesLoaded, getNoData, getSearchQuery } from "../../reducers/courses";
+import {
+  getCourses,
+  getCoursesLoading,
+  getCoursesLoaded,
+  getNoData,
+  getSearchQuery
+} from "../../reducers/courses";
 
 const filterCourses = (courses: Course[], searchQuery: string) => courses.filter(course => course.title.toLowerCase().indexOf(searchQuery) !== -1);
 
