@@ -21,6 +21,8 @@ import { CoursesService } from "./services/courses";
 import { AuthEffects } from "./effects/auth";
 import { AuthService } from "./services/auth";
 import { IsLoggedInGuard } from "./guards/is-logged-in";
+import { AddCoursePageComponent } from "./containers/add-course-page/add-course.component";
+import { AddCourseFormComponent } from "./components/add-course-form/add-course-form.component";
 
 
 @NgModule({
@@ -41,6 +43,8 @@ import { IsLoggedInGuard } from "./guards/is-logged-in";
     CoursesPageComponent,
     LoginPageComponent,
     LoginFormComponent,
+    AddCourseFormComponent,
+    AddCoursePageComponent,
     SpinnerComponent
   ],
   providers: [
