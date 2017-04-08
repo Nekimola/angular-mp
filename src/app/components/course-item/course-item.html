@@ -2,7 +2,7 @@
   <div class="course-details">
     <div class="course-header">
       <h3>{{course.title | uppercase}}</h3>
-      <span>{{course.duration | duration}}</span>
+      <span class="duration">{{course.duration | duration}}</span>
       <i class="fa fa-star" *ngIf="course.topRated"></i>
       <time>{{course.date | date}}</time>
     </div>
