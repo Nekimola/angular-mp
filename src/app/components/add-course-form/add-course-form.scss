@@ -1,4 +1,12 @@
 .add-course-form {
   max-width: 600px;
   margin: 50px auto 0;
+
+  .form-group {
+    .duration {
+      height: 34px;
+      margin: 0;
+      padding: 7px 0;
+    }
+  }
 }

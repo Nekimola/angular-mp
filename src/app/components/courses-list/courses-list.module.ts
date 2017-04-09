@@ -4,18 +4,17 @@ import { CommonModule } from "@angular/common";
 import { CoursesListComponent } from "./courses-list.component";
 import { CourseItemComponent } from "../course-item/course-item.component";
 import { HighlightCourDirective } from "../course-item/highlight-course.directive";
-import { DurationPipe } from "../course-item/duration.pipe";
-import { OrderByPipe } from "./order-by.pipe";
-
+import { AppCommonModule } from "../../common/common.module";
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    AppCommonModule
+  ],
   declarations: [
     CoursesListComponent,
     CourseItemComponent,
-    HighlightCourDirective,
-    DurationPipe,
-    OrderByPipe
+    HighlightCourDirective
   ],
   exports: [CoursesListComponent]
 })

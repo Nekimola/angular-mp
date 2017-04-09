@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'add-course-form',
@@ -6,5 +7,18 @@ import { Component } from "@angular/core";
   styleUrls: ['./add-course-form.scss']
 })
 export class AddCourseFormComponent {
+  form: FormGroup;
 
+  constructor (private fb: FormBuilder) {
+    this.createForm()
+  }
+
+  createForm () {
+    this.form = this.fb.group({
+      title: [ '', Validators.required ],
+      description: [ '' ],
+      date: [ '' ],
+      duration: [ '', Validators.required ],
+    });
+  }
 }

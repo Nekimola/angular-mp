@@ -23,6 +23,7 @@ import { AuthService } from "./services/auth";
 import { IsLoggedInGuard } from "./guards/is-logged-in";
 import { AddCoursePageComponent } from "./containers/add-course-page/add-course.component";
 import { AddCourseFormModule } from "./components/add-course-form/add-course-form.module";
+import { AppCommonModule } from "./common/common.module";
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { AddCourseFormModule } from "./components/add-course-form/add-course-for
     RouterModule.forRoot(routes, { useHash: false }),
     EffectsModule.run(CoursesEffects),
     EffectsModule.run(AuthEffects),
-    Ng2Bs3ModalModule
+    Ng2Bs3ModalModule,
+    AppCommonModule
   ],
   declarations: [
     AppComponent,

@@ -1,50 +1,53 @@
 <form class="form-horizontal add-course-form"
+      [formGroup]="form" novalidate
       (submit)="$event.stopPropagation(); submit.next()">
   <div class="form-group">
     <label class="col-sm-3 control-label">Title</label>
     <div class="col-sm-9">
       <input type="text"
-             required
              class="form-control"
              placeholder="Enter title"
-             name="title">
+             name="title"
+             formControlName="title">
     </div>
   </div>
   <div class="form-group">
     <label class="col-sm-3 control-label">Description</label>
     <div class="col-sm-9">
-      <textarea required
-                rows="3"
+      <textarea rows="3"
                 class="form-control"
                 placeholder="Enter description"
-                name="title"></textarea>
+                name="description"
+                formControlName="description"></textarea>
     </div>
   </div>
   <div class="form-group">
     <label class="col-sm-3 control-label">Date</label>
     <div class="col-sm-4">
       <input type="date"
-             required
              class="form-control"
-             name="date">
+             name="date"
+             formControlName="date">
     </div>
   </div>
   <div class="form-group">
     <label class="col-sm-3 control-label">Duration</label>
     <div class="col-sm-2">
-      <input type="number"
-             required
+      <input type="text"
              class="form-control"
-             name="duration">
+             name="duration"
+             formControlName="duration">
     </div>
-    <div class="col-sm-3">3h 34min</div>
+    <div class="col-sm-3 duration">{{form.value.duration | duration}}</div>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-9">
       <button type="submit"
-              class="btn btn-default">Save</button>
-      <button type="submit"
-              class="btn btn-default">Cancel</button>
+              class="btn btn-default"
+              [disabled]="form.status === 'INVALID'">Save</button>
+      <a type="submit"
+         routerLink="/"
+         class="btn btn-default">Cancel</a>
     </div>
   </div>
 </form>
