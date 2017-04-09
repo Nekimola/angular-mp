@@ -22,7 +22,7 @@ import { AuthEffects } from "./effects/auth";
 import { AuthService } from "./services/auth";
 import { IsLoggedInGuard } from "./guards/is-logged-in";
 import { AddCoursePageComponent } from "./containers/add-course-page/add-course.component";
-import { AddCourseFormComponent } from "./components/add-course-form/add-course-form.component";
+import { AddCourseFormModule } from "./components/add-course-form/add-course-form.module";
 
 
 @NgModule({
@@ -32,6 +32,7 @@ import { AddCourseFormComponent } from "./components/add-course-form/add-course-
     AppHeaderModule,
     ToolBarModule,
     CoursesListModule,
+    AddCourseFormModule,
     StoreModule.provideStore(rootReducer),
     RouterModule.forRoot(routes, { useHash: false }),
     EffectsModule.run(CoursesEffects),
@@ -43,7 +44,6 @@ import { AddCourseFormComponent } from "./components/add-course-form/add-course-
     CoursesPageComponent,
     LoginPageComponent,
     LoginFormComponent,
-    AddCourseFormComponent,
     AddCoursePageComponent,
     SpinnerComponent
   ],
