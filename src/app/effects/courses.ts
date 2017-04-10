@@ -24,8 +24,6 @@ export class CoursesEffects {
     .switchMap(() => {
       return this.coursesSrv.load()
         .map((response: any[]) => response
-          // filter outdated courses, older than 14 days
-          .filter((course: any) => course.date > (new Date()).getTime() - 1000 * 60 * 60 * 24 * 14)
           // tweak response shape to fit data model
           .map(({ id, title, duration, description, topRated, date }): Course =>
             ({id, title, duration, description, topRated, date})

@@ -13,7 +13,7 @@ export class CoursesService {
       duration: 75,
       description: 'Some random words random words random words random words random words',
       topRated: false,
-      date: 1490641575025,
+      date: 1490959575025,
       someField: 'asd'
     }, {
       id: Math.random().toString(36).slice(-8),

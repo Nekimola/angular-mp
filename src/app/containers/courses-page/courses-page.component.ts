@@ -11,10 +11,10 @@ import {
   getCoursesLoading,
   getCoursesLoaded,
   getNoData,
-  getSearchQuery
+  getSearchQuery,
+  getRecentCourses,
+  getSearchedCourses
 } from "../../reducers/courses";
-
-const filterCourses = (courses: Course[], searchQuery: string) => courses.filter(course => course.title.toLowerCase().indexOf(searchQuery) !== -1);
 
 @Component({
   selector: 'courses-page',
@@ -41,7 +41,8 @@ export class CoursesPageComponent implements OnInit, OnDestroy {
       .subscribe((isLoaded) => !isLoaded && this.store.dispatch(new LoadCoursesAction()));
     this.searchQuery$ = this.store.select(getSearchQuery);
     this.courses$ = this.store.select(getCourses)
-      .combineLatest(this.searchQuery$, filterCourses);
+      .map(getRecentCourses)
+      .combineLatest(this.searchQuery$, getSearchedCourses);
     this.isLoading$ = this.store.select(getCoursesLoading);
     this.isNoData$ = this.store.select(getNoData);
   }
