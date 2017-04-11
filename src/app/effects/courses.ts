@@ -24,10 +24,8 @@ export class CoursesEffects {
     .switchMap(() => {
       return this.coursesSrv.load()
         .map((response: any[]) => response
-          // tweak response shape to fit data model
-          .map(({ id, title, duration, description, topRated, date }): Course =>
-            ({id, title, duration, description, topRated, date})
-          ))
+          .map((courseProps): Course => new Course(courseProps))
+        )
         .map((courses: Course[]) => new LoadCoursesSuccessAction(courses))
         .catch((error) => of(new LoadCoursesFailAction(error)));
     });

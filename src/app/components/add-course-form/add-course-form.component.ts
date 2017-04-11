@@ -17,7 +17,7 @@ export class AddCourseFormComponent {
     this.form = this.fb.group({
       title: [ '', Validators.required ],
       description: [ '' ],
-      date: [ '' ],
+      date: [ '', Validators.required ],
       duration: [ '', Validators.required ],
     });
   }

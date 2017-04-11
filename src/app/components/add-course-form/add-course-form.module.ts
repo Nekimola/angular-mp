@@ -4,7 +4,6 @@ import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 
 import { AddCourseFormComponent } from "./add-course-form.component";
-import { CourseDurationComponent } from "../course-duration/course-duration.component";
 import { AppCommonModule } from "../../common/common.module";
 
 @NgModule({
@@ -15,8 +14,7 @@ import { AppCommonModule } from "../../common/common.module";
     RouterModule
   ],
   declarations: [
-    AddCourseFormComponent,
-    CourseDurationComponent
+    AddCourseFormComponent
   ],
   exports: [
     AddCourseFormComponent
