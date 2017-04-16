@@ -10,7 +10,7 @@ export class CoursesService {
   constructor (private http: Http) {}
 
   load (): Observable<Response> {
-    return this.http.get(`${this.apiUrl}/courses`);
+    return this.http.get(`${this.apiUrl}/courses?start=0&count=50`);
   }
 
   remove (id: string) {
