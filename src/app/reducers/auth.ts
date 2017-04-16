@@ -29,6 +29,12 @@ export const authReducer = (state = initialState, action: Action) => {
       });
     }
 
+    case actionTypes.LOGIN_FAIL: {
+      return Object.assign({}, state, {
+        progress: false
+      });
+    }
+
     case actionTypes.LOGOUT: {
       return Object.assign({}, state, {
         user: null
