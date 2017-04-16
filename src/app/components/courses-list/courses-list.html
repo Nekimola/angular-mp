@@ -1,5 +1,6 @@
 <ul class="courses-list">
-  <course-item *ngFor="let item of courses | orderBy : 'date'"
+  <course-item *ngFor="let item of courses | orderBy : 'date'  | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage,  totalItems: totalItems }"
                [course]="item"
                (remove)="remove.next($event)"></course-item>
 </ul>
+<pagination-controls (pageChange)="pageChange.next($event)"></pagination-controls>

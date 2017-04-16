@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { of } from "rxjs/observable/of";
-import { Http, Response } from "@angular/http";
+import { Http, Response, URLSearchParams } from "@angular/http";
 
 @Injectable()
 export class CoursesService {
@@ -9,12 +9,16 @@ export class CoursesService {
 
   constructor (private http: Http) {}
 
-  load (): Observable<Response> {
-    return this.http.get(`${this.apiUrl}/courses?start=0&count=50`);
+  load (payload: any): Observable<Response> {
+    const params = new URLSearchParams();
+
+    params.set('start', payload.start);
+    params.set('count', payload.count);
+
+    return this.http.get(`${this.apiUrl}/courses`, {search: params});
   }
 
   remove (id: string) {
-    return of({})
-      .delay(500);
+    return of({}).delay(500);
   }
 }

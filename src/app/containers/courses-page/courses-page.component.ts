@@ -9,11 +9,10 @@ import { RemoveCourseAction, SearchCourseAction, LoadCoursesAction } from "../..
 import {
   getCourses,
   getCoursesLoading,
-  getCoursesLoaded,
   getNoData,
   getSearchQuery,
-  getRecentCourses,
-  getSearchedCourses
+  getSearchedCourses,
+  getTotalCourses
 } from "../../reducers/courses";
 
 @Component({
@@ -22,29 +21,38 @@ import {
   templateUrl: './courses-page.html',
   styleUrls: ['./courses-page.scss']
 })
-export class CoursesPageComponent implements OnInit, OnDestroy {
+export class CoursesPageComponent implements OnInit {
   courses$: Observable<Course[]>;
   isLoading$: Observable<boolean>;
   isNoData$: Observable<boolean>;
   searchQuery$: Observable<string>;
+  totalCourses$: Observable<number>;
 
   @ViewChild('confirmModal')
   modal: ModalComponent;
 
   courseIdToRemove: string;
-  coursesLoadedSubscription: Subscription;
+  currentPage = 1;
+  itemsPerPage = 10;
 
   constructor(private store: Store<AppState>) {}
 
+  loadCourses () {
+    this.store.dispatch(new LoadCoursesAction({
+      start: this.itemsPerPage * (this.currentPage - 1),
+      count: this.itemsPerPage
+    }));
+  }
+
   ngOnInit () {
-    this.coursesLoadedSubscription = this.store.select(getCoursesLoaded)
-      .subscribe((isLoaded) => !isLoaded && this.store.dispatch(new LoadCoursesAction()));
+    this.loadCourses();
+
     this.searchQuery$ = this.store.select(getSearchQuery);
     this.courses$ = this.store.select(getCourses)
-      .map(getRecentCourses)
       .combineLatest(this.searchQuery$, getSearchedCourses);
     this.isLoading$ = this.store.select(getCoursesLoading);
     this.isNoData$ = this.store.select(getNoData);
+    this.totalCourses$ = this.store.select(getTotalCourses);
   }
 
   onRemove (id: string) {
@@ -61,7 +69,8 @@ export class CoursesPageComponent implements OnInit, OnDestroy {
     this.store.dispatch(new SearchCourseAction(query));
   }
 
-  ngOnDestroy () {
-    this.coursesLoadedSubscription.unsubscribe();
+  onPageChange (currentPage: number) {
+    this.currentPage = currentPage;
+    this.loadCourses();
   }
 }

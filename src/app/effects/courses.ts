@@ -22,12 +22,14 @@ export class CoursesEffects {
   @Effect()
   loadCourses$: Observable<Action> = this.actions$
     .ofType(actionTypes.LOAD_COURSES)
-    .switchMap(() => {
-      return this.coursesSrv.load()
+    .switchMap(({ payload }) => {
+      return this.coursesSrv.load(payload)
         .map((res: Response) => res.json())
-        .map((courses: any[]) => courses
-          .map((courseProps): Course => new Course(courseProps)))
-        .map((courses: Course[]) => new LoadCoursesSuccessAction(courses))
+        .map((res: any) => ({
+          data: res.data.map((courseProps: any): Course => new Course(courseProps)),
+          totalItems: res.totalItems
+        }))
+        .map((res: any) => new LoadCoursesSuccessAction(res))
         .catch((error: any) => of(new LoadCoursesFailAction(error)));
     });
 

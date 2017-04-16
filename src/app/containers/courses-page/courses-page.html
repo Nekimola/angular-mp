@@ -3,7 +3,11 @@
   <spinner [show]="isLoading$ | async"></spinner>
   <courses-list *ngIf="!(isLoading$ | async)"
                 [courses]="courses$ | async"
-                (remove)="onRemove($event)"></courses-list>
+                [currentPage]="currentPage"
+                [itemsPerPage]="itemsPerPage"
+                [totalItems]="totalCourses$ | async"
+                (remove)="onRemove($event)"
+                (pageChange)="onPageChange($event)"></courses-list>
   <div class="no-data"
        *ngIf="isNoData$ | async">No data. Feel free to add a new course.</div>
 </section>

@@ -8,6 +8,7 @@ export interface CoursesState  {
   loading: boolean,
   loaded: boolean,
   searchQuery: string,
+  totalItems: number,
   entities: Course[]
 }
 
@@ -15,6 +16,7 @@ const initialState: CoursesState = {
   loading: false,
   loaded: false,
   searchQuery: '',
+  totalItems: 0,
   entities: []
 };
 
@@ -29,7 +31,8 @@ export const coursesReducer = (state = initialState, action: Action) => {
 
     case actionTypes.LOAD_COURSES_SUCCESS: {
       return Object.assign({}, state, {
-        entities: action.payload,
+        entities: action.payload.data,
+        totalItems: action.payload.totalItems,
         loading: false,
         loaded: true
       });
@@ -59,6 +62,7 @@ export const coursesReducer = (state = initialState, action: Action) => {
 };
 
 export const getCourses = (appState: AppState) => appState.courses.entities;
+export const getTotalCourses = (appState: AppState) => appState.courses.totalItems;
 export const getCoursesLoading = (appState: AppState) => appState.courses.loading;
 export const getCoursesLoaded = (appState: AppState) => appState.courses.loaded;
 export const getSearchQuery = (appState: AppState) => appState.courses.searchQuery;

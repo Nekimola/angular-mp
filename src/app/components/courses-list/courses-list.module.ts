@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { CoursesListComponent } from "./courses-list.component";
 import { CourseItemComponent } from "../course-item/course-item.component";
@@ -9,7 +10,8 @@ import { AppCommonModule } from "../../common/common.module";
 @NgModule({
   imports: [
     CommonModule,
-    AppCommonModule
+    AppCommonModule,
+    NgxPaginationModule
   ],
   declarations: [
     CoursesListComponent,

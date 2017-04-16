@@ -13,6 +13,18 @@ export class CoursesListComponent {
   @Input()
   courses: Course[];
 
+  @Input()
+  currentPage: number;
+
+  @Input()
+  itemsPerPage: number;
+
+  @Input()
+  totalItems: number;
+
   @Output()
   remove = new Subject<string>();
+
+  @Output()
+  pageChange = new Subject<string>();
 }

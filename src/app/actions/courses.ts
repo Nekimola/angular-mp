@@ -16,6 +16,8 @@ export const actionTypes = {
 
 export class LoadCoursesAction implements Action {
   type = actionTypes.LOAD_COURSES;
+
+  constructor (public payload: any) { }
 }
 
 export class LoadCoursesSuccessAction implements Action {
