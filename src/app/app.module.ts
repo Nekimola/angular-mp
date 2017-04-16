@@ -5,6 +5,7 @@ import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import { RouterModule } from "@angular/router";
 import { Ng2Bs3ModalModule } from "ng2-bs3-modal/ng2-bs3-modal";
+import { HttpModule } from "@angular/http";
 
 import { routes } from "./routes";
 import { rootReducer } from "./store";
@@ -24,7 +25,6 @@ import { IsLoggedInGuard } from "./guards/is-logged-in";
 import { AddCoursePageComponent } from "./containers/add-course-page/add-course.component";
 import { AddCourseFormModule } from "./components/add-course-form/add-course-form.module";
 import { AppCommonModule } from "./common/common.module";
-import { HttpModule } from "@angular/http";
 
 
 @NgModule({

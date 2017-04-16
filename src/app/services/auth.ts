@@ -1,16 +1,16 @@
 import { Injectable } from "@angular/core";
-import { of } from "rxjs/observable/of";
 import { Observable } from "rxjs";
 
-import { User } from "../models/user";
 import { LoginFormModel } from "../models/login-form";
+import { Http, Response } from "@angular/http";
 
 @Injectable()
 export class AuthService {
-  apiUrl: string = '';
+  apiUrl = 'https://angular-mp.now.sh';
 
-  login (data: LoginFormModel): Observable<User> {
-    return of({ username: data.login })
-      .delay(1000);
+  constructor (private http: Http) {}
+
+  login (data: LoginFormModel): Observable<Response> {
+    return this.http.post(`${this.apiUrl}/auth/login`, { login: data.login, password: data.password });
   }
 }

@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { Action } from "@ngrx/store";
 import { of } from "rxjs/observable/of";
 import { Router } from "@angular/router";
+import { Response } from "@angular/http";
 
 import { actionTypes } from "../actions/auth";
 import { AuthService } from "../services/auth";
@@ -23,6 +24,7 @@ export class AuthEffects {
     .ofType(actionTypes.LOGIN)
     .switchMap(({ payload }) => {
       return this.authSrv.login(payload)
+        .map((res: Response) => res.json())
         .map((user: User) => new LoginSuccessAction(user))
         .catch((error: any) => of(new LoginFailAction(error)));
     });
