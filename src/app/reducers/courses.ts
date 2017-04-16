@@ -65,5 +65,5 @@ export const getSearchQuery = (appState: AppState) => appState.courses.searchQue
 export const getNoData = (appState: AppState) => !appState.courses.entities.length && !appState.courses.loading;
 
 const twoWeeks = 1000 * 60 * 60 * 24 * 14;
-export const getRecentCourses = (courses: Course[]) => courses.filter((course: any) => course.date > (new Date()).getTime() - twoWeeks);
+export const getRecentCourses = (courses: Course[]) => courses.filter((course: any) => (new Date(course.date)).getTime() > (new Date()).getTime() - twoWeeks);
 export const getSearchedCourses = (courses: Course[], searchQuery: string) => courses.filter(course => course.title.toLowerCase().indexOf(searchQuery) !== -1);

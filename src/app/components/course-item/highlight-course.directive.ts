@@ -16,13 +16,14 @@ export class HighlightCourDirective implements OnInit {
 
   highlight () {
     const twoWeeks = 1000 * 60 * 60 * 24 * 14;
-    const today = (new Date).getTime();
+    const today = (new Date()).getTime();
+    const courseDate = new Date(this.course.date).getTime();
 
-    if (this.course.date < today && this.course.date > (today - twoWeeks)) {
+    if (courseDate < today && courseDate > (today - twoWeeks)) {
       this.element.nativeElement.classList.add('new');
     }
 
-    if (this.course.date > today) {
+    if (courseDate > today) {
       this.element.nativeElement.classList.add('upcoming');
     }
   }

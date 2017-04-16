@@ -3,12 +3,12 @@ import { Actions, Effect } from "@ngrx/effects";
 import { Observable } from "rxjs";
 import { Action } from "@ngrx/store";
 import { of } from "rxjs/observable/of";
+import { Router } from "@angular/router";
 
 import { actionTypes } from "../actions/auth";
 import { AuthService } from "../services/auth";
 import { LoginSuccessAction, LoginFailAction } from "../actions/auth";
 import { User } from "../models/user";
-import { Router } from "@angular/router";
 
 @Injectable()
 export class AuthEffects {

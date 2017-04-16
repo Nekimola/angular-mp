@@ -1,10 +1,9 @@
-html, body, main {
-  height: 100%;
+body {
+  background-color: #FAFBFC;
 }
 
 main {
   color: #545454;
-  background-color: #FAFBFC;
   font-family: "Open Sans", sans-serif;
 }
 

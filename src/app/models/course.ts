@@ -3,7 +3,7 @@ export class Course {
   title: string;
   duration: number;
   description: string;
-  topRated: boolean;
+  isTopRated: boolean;
   date: number;
 
   constructor (properties: any) {
@@ -12,5 +12,6 @@ export class Course {
     this.duration = properties.duration;
     this.description = properties.description;
     this.date = properties.date;
+    this.isTopRated = properties.isTopRated;
   }
 }

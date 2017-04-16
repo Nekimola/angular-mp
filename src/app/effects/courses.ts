@@ -3,6 +3,7 @@ import { Actions, Effect } from "@ngrx/effects";
 import { Observable } from "rxjs";
 import { Action } from "@ngrx/store";
 import { of } from "rxjs/observable/of";
+import { Response } from "@angular/http";
 
 import { CoursesService } from "../services/courses";
 import {
@@ -23,11 +24,11 @@ export class CoursesEffects {
     .ofType(actionTypes.LOAD_COURSES)
     .switchMap(() => {
       return this.coursesSrv.load()
-        .map((response: any[]) => response
-          .map((courseProps): Course => new Course(courseProps))
-        )
+        .map((res: Response) => res.json())
+        .map((courses: any[]) => courses
+          .map((courseProps): Course => new Course(courseProps)))
         .map((courses: Course[]) => new LoadCoursesSuccessAction(courses))
-        .catch((error) => of(new LoadCoursesFailAction(error)));
+        .catch((error: any) => of(new LoadCoursesFailAction(error)));
     });
 
   @Effect()

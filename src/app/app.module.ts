@@ -24,6 +24,7 @@ import { IsLoggedInGuard } from "./guards/is-logged-in";
 import { AddCoursePageComponent } from "./containers/add-course-page/add-course.component";
 import { AddCourseFormModule } from "./components/add-course-form/add-course-form.module";
 import { AppCommonModule } from "./common/common.module";
+import { HttpModule } from "@angular/http";
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { AppCommonModule } from "./common/common.module";
     ToolBarModule,
     CoursesListModule,
     AddCourseFormModule,
+    HttpModule,
     StoreModule.provideStore(rootReducer),
     RouterModule.forRoot(routes, { useHash: false }),
     EffectsModule.run(CoursesEffects),

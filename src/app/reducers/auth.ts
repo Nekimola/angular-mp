@@ -1,7 +1,8 @@
+import { Action } from "@ngrx/store";
+
 import { actionTypes } from "../actions/auth";
 import { User } from "../models/user";
 import { AppState } from "../store";
-import { Action } from "@ngrx/store";
 
 export interface AuthState {
   progress: boolean,
