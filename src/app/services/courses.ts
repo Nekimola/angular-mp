@@ -14,6 +14,7 @@ export class CoursesService {
 
     params.set('start', payload.start);
     params.set('count', payload.count);
+    params.set('query', payload.query);
 
     return this.http.get(`${this.apiUrl}/courses`, {search: params});
   }

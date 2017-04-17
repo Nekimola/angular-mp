@@ -1,17 +1,15 @@
-import { Component, ChangeDetectionStrategy, OnInit, ViewChild, OnDestroy } from "@angular/core";
-import { Observable, Subscription } from "rxjs";
+import { Component, ChangeDetectionStrategy, OnInit, ViewChild } from "@angular/core";
+import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 import { Course } from "../../models/course";
 import { AppState } from "../../store";
-import { RemoveCourseAction, SearchCourseAction, LoadCoursesAction } from "../../actions/courses";
+import { RemoveCourseAction, LoadCoursesAction } from "../../actions/courses";
 import {
   getCourses,
   getCoursesLoading,
   getNoData,
-  getSearchQuery,
-  getSearchedCourses,
   getTotalCourses
 } from "../../reducers/courses";
 
@@ -25,7 +23,6 @@ export class CoursesPageComponent implements OnInit {
   courses$: Observable<Course[]>;
   isLoading$: Observable<boolean>;
   isNoData$: Observable<boolean>;
-  searchQuery$: Observable<string>;
   totalCourses$: Observable<number>;
 
   @ViewChild('confirmModal')
@@ -37,22 +34,21 @@ export class CoursesPageComponent implements OnInit {
 
   constructor(private store: Store<AppState>) {}
 
-  loadCourses () {
-    this.store.dispatch(new LoadCoursesAction({
-      start: this.itemsPerPage * (this.currentPage - 1),
-      count: this.itemsPerPage
-    }));
-  }
-
   ngOnInit () {
     this.loadCourses();
 
-    this.searchQuery$ = this.store.select(getSearchQuery);
-    this.courses$ = this.store.select(getCourses)
-      .combineLatest(this.searchQuery$, getSearchedCourses);
+    this.courses$ = this.store.select(getCourses);
     this.isLoading$ = this.store.select(getCoursesLoading);
     this.isNoData$ = this.store.select(getNoData);
     this.totalCourses$ = this.store.select(getTotalCourses);
+  }
+
+  loadCourses (searchQuery = '') {
+    this.store.dispatch(new LoadCoursesAction({
+      start: this.itemsPerPage * (this.currentPage - 1),
+      count: this.itemsPerPage,
+      query: searchQuery
+    }));
   }
 
   onRemove (id: string) {
@@ -66,7 +62,7 @@ export class CoursesPageComponent implements OnInit {
   }
 
   onSearch (query: string) {
-    this.store.dispatch(new SearchCourseAction(query));
+    this.loadCourses(query);
   }
 
   onPageChange (currentPage: number) {
