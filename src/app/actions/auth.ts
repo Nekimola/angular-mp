@@ -6,7 +6,8 @@ export const actionTypes = {
   LOGIN: 'LOGIN',
   LOGIN_SUCCESS: 'LOGIN_SUCCESS',
   LOGIN_FAIL: 'LOGIN_FAIL',
-  LOGOUT: 'LOGOUT'
+  LOGOUT: 'LOGOUT',
+  GET_USER_INFO: 'GET_USER_INFO'
 };
 
 export class LoginAction implements Action {
@@ -29,6 +30,12 @@ export class LoginFailAction implements Action {
 
 export class LogoutAction implements Action {
   type = actionTypes.LOGOUT;
+
+  constructor () { }
+}
+
+export class GetUserInfoAction implements Action {
+  type = actionTypes.GET_USER_INFO;
 
   constructor () { }
 }

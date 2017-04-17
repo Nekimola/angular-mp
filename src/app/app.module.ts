@@ -25,6 +25,7 @@ import { IsLoggedInGuard } from "./guards/is-logged-in";
 import { AddCoursePageComponent } from "./containers/add-course-page/add-course.component";
 import { AddCourseFormModule } from "./components/add-course-form/add-course-form.module";
 import { AppCommonModule } from "./common/common.module";
+import { ApiService } from "./services/api";
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { AppCommonModule } from "./common/common.module";
   providers: [
     CoursesService,
     AuthService,
-    IsLoggedInGuard
+    IsLoggedInGuard,
+    ApiService
   ],
   bootstrap: [ AppComponent ]
 })

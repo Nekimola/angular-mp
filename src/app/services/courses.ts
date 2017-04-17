@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Http, Response, URLSearchParams } from "@angular/http";
+import { Response, URLSearchParams } from "@angular/http";
+import { ApiService } from "./api";
 
 @Injectable()
 export class CoursesService {
   apiUrl = 'https://angular-mp.now.sh';
 
-  constructor (private http: Http) {}
+  constructor (private http: ApiService) {}
 
   load (payload: any): Observable<Response> {
     const params = new URLSearchParams();
