@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { of } from "rxjs/observable/of";
 import { Http, Response, URLSearchParams } from "@angular/http";
 
 @Injectable()
@@ -20,6 +19,6 @@ export class CoursesService {
   }
 
   remove (id: string) {
-    return of({}).delay(500);
+    return this.http.delete(`${this.apiUrl}/courses/${id}`);
   }
 }
