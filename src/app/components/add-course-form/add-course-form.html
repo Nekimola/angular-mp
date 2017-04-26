@@ -32,13 +32,7 @@
   </div>
   <div class="form-group">
     <label class="col-sm-3 control-label">Duration</label>
-    <div class="col-sm-2">
-      <input type="text"
-             class="form-control"
-             name="duration"
-             formControlName="duration">
-    </div>
-    <div class="col-sm-3 duration">{{form.value.duration | duration}}</div>
+    <duration-input formControlName="duration"></duration-input>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-9">
