@@ -26,6 +26,8 @@ import { AddCoursePageComponent } from "./containers/add-course-page/add-course.
 import { AddCourseFormModule } from "./components/add-course-form/add-course-form.module";
 import { AppCommonModule } from "./common/common.module";
 import { ApiService } from "./services/api";
+import { AuthorsEffects } from "./effects/authors";
+import { AuthorsService } from "./services/authors";
 
 
 @NgModule({
@@ -41,6 +43,7 @@ import { ApiService } from "./services/api";
     RouterModule.forRoot(routes, { useHash: false }),
     EffectsModule.run(CoursesEffects),
     EffectsModule.run(AuthEffects),
+    EffectsModule.run(AuthorsEffects),
     Ng2Bs3ModalModule,
     AppCommonModule
   ],
@@ -56,7 +59,8 @@ import { ApiService } from "./services/api";
     CoursesService,
     AuthService,
     IsLoggedInGuard,
-    ApiService
+    ApiService,
+    AuthorsService
   ],
   bootstrap: [ AppComponent ]
 })

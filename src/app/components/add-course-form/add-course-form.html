@@ -1,6 +1,6 @@
 <form class="form-horizontal add-course-form"
       [formGroup]="form" novalidate
-      (submit)="$event.stopPropagation(); submit.next()">
+      (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label class="col-sm-3 control-label">Title</label>
     <div class="col-sm-9">

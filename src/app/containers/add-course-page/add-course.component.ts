@@ -2,6 +2,9 @@ import { Component, ChangeDetectionStrategy, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
 
 import { AppState } from "../../store";
+import { Observable } from "rxjs";
+import { Author } from "../../models/author";
+import { LoadAuthorsAction } from "../../actions/authors";
 
 @Component({
   selector: 'add-course-page',
@@ -13,10 +16,13 @@ import { AppState } from "../../store";
   `
 })
 export class AddCoursePageComponent implements OnInit {
+  authors$: Observable<Author[]>;
 
   constructor (private store: Store<AppState>) {}
 
   ngOnInit () {
+    this.store.dispatch(new LoadAuthorsAction());
+    this.authors$ = this.store.select('authors');
   }
 
   onSubmit () {

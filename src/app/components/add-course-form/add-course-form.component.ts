@@ -27,4 +27,8 @@ export class AddCourseFormComponent {
       duration: [ '', Validators.required ],
     });
   }
+
+  onSubmit () {
+    console.log(this.form.value);
+  }
 }

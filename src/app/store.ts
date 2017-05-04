@@ -5,6 +5,7 @@ import { storeFreeze } from "ngrx-store-freeze";
 import { coursesReducer, CoursesState } from "./reducers/courses"
 import { AuthState, authReducer } from "./reducers/auth";
 import { localStorageSync } from "ngrx-store-localstorage";
+import { authorsReducer } from "./reducers/authors";
 
 export interface AppState {
   courses: CoursesState,
@@ -13,7 +14,8 @@ export interface AppState {
 
 const reducers = {
   courses: coursesReducer,
-  auth: authReducer
+  auth: authReducer,
+  authors: authorsReducer
 };
 
 const developmentReducer: ActionReducer<AppState> = compose(storeFreeze, localStorageSync([{auth: ['user']}], true), combineReducers)(reducers);
