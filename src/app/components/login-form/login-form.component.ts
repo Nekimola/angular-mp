@@ -1,7 +1,6 @@
-import { Component, Output, ChangeDetectionStrategy, Input } from "@angular/core";
-import { Subject } from "rxjs";
-
+import { Component, Output, ChangeDetectionStrategy, Input, EventEmitter } from "@angular/core";
 import { LoginFormModel } from "../../models/login-form";
+
 
 @Component({
   selector: 'login-form',
@@ -19,5 +18,14 @@ export class LoginFormComponent {
   inProgress: boolean;
 
   @Output()
-  submit = new Subject<LoginFormModel>();
+  onSubmit = new EventEmitter<LoginFormModel>();
+
+  submit (event: any) {
+    event.stopPropagation();
+    this.onSubmit.emit(this.user);
+    this.user = {
+      login: '',
+      password: ''
+    };
+  }
 }

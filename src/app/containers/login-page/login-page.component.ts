@@ -12,7 +12,7 @@ import { getLoginProgress } from "../../reducers/auth";
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="content">
-      <login-form (submit)="onSubmit($event)"
+      <login-form (onSubmit)="onSubmit($event)"
                   [inProgress]="inProgress$ | async"></login-form>
     </section>
   `
