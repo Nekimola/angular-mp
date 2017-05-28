@@ -37,6 +37,8 @@ export class AuthorsSelectComponent implements ControlValueAccessor {
     if (value !== undefined) {
       this.authors = value;
     }
+
+    this.propagateChange(this.authors.filter((a: Author) => a.checked));
   }
 
   private propagateChange (_: any) { }

@@ -1,5 +1,6 @@
 import { Action } from "@ngrx/store";
 import { Course } from "../models/course";
+import { AddCourseFormModel } from "../models/add-course-form";
 
 export const actionTypes = {
   LOAD_COURSES: 'LOAD_COURSES',
@@ -35,7 +36,19 @@ export class LoadCoursesFailAction implements Action {
 export class AddCourseAction implements Action {
   type = actionTypes.ADD_COURSE;
 
-  constructor (public payload: Course) { }
+  constructor (public payload: AddCourseFormModel) { }
+}
+
+export class AddCourseSuccessAction implements Action {
+  type = actionTypes.ADD_COURSE_SUCCESS;
+
+  constructor (public payload: any) { }
+}
+
+export class AddCourseFailAction implements Action {
+  type = actionTypes.ADD_COURSE_FAIL;
+
+  constructor (public payload: any) { }
 }
 
 export class RemoveCourseAction implements Action {

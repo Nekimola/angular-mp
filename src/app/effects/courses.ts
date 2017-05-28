@@ -11,7 +11,9 @@ import {
   LoadCoursesSuccessAction,
   LoadCoursesFailAction,
   RemoveCourseSuccessAction,
-  RemoveCourseFailAction
+  RemoveCourseFailAction,
+  AddCourseSuccessAction,
+  AddCourseFailAction
 } from "../actions/courses";
 import { Course } from "../models/course";
 
@@ -40,5 +42,14 @@ export class CoursesEffects {
       return this.coursesSrv.remove(action.payload)
         .map(() => new RemoveCourseSuccessAction(action.payload))
         .catch((error) => of(new RemoveCourseFailAction(error)));
+    });
+
+  @Effect()
+  addCourse$: Observable<Action> = this.actions$
+    .ofType(actionTypes.ADD_COURSE)
+    .switchMap((action) => {
+      return this.coursesSrv.add(action.payload)
+        .map(() => new AddCourseSuccessAction(action.payload))
+        .catch((error) => of(new AddCourseFailAction(error)));
     });
 }

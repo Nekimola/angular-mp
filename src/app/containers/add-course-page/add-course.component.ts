@@ -6,13 +6,16 @@ import { Observable } from "rxjs";
 import { Author } from "../../models/author";
 import { LoadAuthorsAction } from "../../actions/authors";
 import { getAuthors } from "../../reducers/authors";
+import { AddCourseFormModel } from "../../models/add-course-form";
+import { AddCourseAction } from "../../actions/courses";
 
 @Component({
   selector: 'add-course-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="content">
-      <add-course-form [authors]="authors$ | async"></add-course-form>
+      <add-course-form [authors]="authors$ | async" 
+                       (submit)="onSubmit($event)"></add-course-form>
     </section>
   `
 })
@@ -26,6 +29,7 @@ export class AddCoursePageComponent implements OnInit {
     this.authors$ = this.store.select(getAuthors);
   }
 
-  onSubmit () {
+  onSubmit (course: AddCourseFormModel) {
+    this.store.dispatch(new AddCourseAction(course));
   }
 }

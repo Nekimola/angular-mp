@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, OnChanges, OnInit } from "@angular/core";
+import { Component, Input, ChangeDetectionStrategy, OnChanges, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 import { Author } from "../../models/author";
@@ -14,6 +14,9 @@ export class AddCourseFormComponent implements OnChanges, OnInit {
 
   @Input()
   authors: Author[] = [];
+
+  @Output()
+  submit = new EventEmitter();
 
   constructor (private fb: FormBuilder) {}
 
@@ -43,11 +46,14 @@ export class AddCourseFormComponent implements OnChanges, OnInit {
       ]],
       date: [ '', Validators.required ],
       duration: [ '', Validators.required ],
-      authors: [ this.authors, Validators.required ],
+      authors: [ this.authors, [
+        Validators.required]
+      ],
     });
   }
 
-  onSubmit () {
-    console.log(this.form.value);
+  onSubmit (event: any) {
+    event.stopPropagation();
+    this.submit.emit(this.form.value)
   }
 }
