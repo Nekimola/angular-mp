@@ -37,3 +37,4 @@ export const authorsReducer = (state = initialState, action: Action) => {
 };
 
 export const getAuthors = (appState: AppState) => appState.authors.entities;
+export const getAuthorsProgress = (appState: AppState) => appState.authors.progress;

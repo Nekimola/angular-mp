@@ -17,7 +17,7 @@ import { Author } from "../../models/author";
         <input type="checkbox" 
                (change)="onChange($event, author, i)" 
                [checked]="author.checked ? 'checked' : ''">  
-          {{author.firstName}}
+          {{author.firstName}} {{author.lastName}}
       </li>
     </ul>            
   `,

@@ -55,6 +55,19 @@ export const coursesReducer = (state = initialState, action: Action) => {
       });
     }
 
+    case actionTypes.ADD_COURSE: {
+      return Object.assign({}, state, {
+        loading: true
+      });
+    }
+
+    case actionTypes.ADD_COURSE_FAIL:
+    case actionTypes.ADD_COURSE_SUCCESS: {
+      return Object.assign({}, state, {
+        loading: false
+      });
+    }
+
     default: {
       return state;
     }
