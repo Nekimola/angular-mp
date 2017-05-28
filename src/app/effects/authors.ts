@@ -7,7 +7,6 @@ import { Response } from "@angular/http";
 
 import { actionTypes, LoadAuthorsSuccessAction, LoadAuthorsFailAction } from "../actions/authors";
 import { AuthorsService } from "../services/authors";
-import { } from "../actions/authors";
 import { Author } from "../models/author";
 
 @Injectable()
@@ -20,7 +19,7 @@ export class AuthorsEffects {
   @Effect()
   loadAuthors$: Observable<Action> = this.actions$
     .ofType(actionTypes.LOAD_AUTHORS)
-    .switchMap(({ payload }) => {
+    .switchMap(() => {
       return this.authorsSrv.load()
         .map((res: Response) => res.json())
         .map((authors: Author[]) => new LoadAuthorsSuccessAction(authors))

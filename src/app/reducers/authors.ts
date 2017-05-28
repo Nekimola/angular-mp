@@ -4,14 +4,14 @@ import { actionTypes } from "../actions/authors";
 import { Author } from "../models/author";
 import { AppState } from "../store";
 
-export interface AuthState {
+export interface AuthorsState {
   progress: boolean,
-  authors: Author[]
+  entities: Author[]
 }
 
-const initialState: AuthState = {
+const initialState: AuthorsState = {
   progress: false,
-  authors: []
+  entities: []
 };
 
 export const authorsReducer = (state = initialState, action: Action) => {
@@ -23,8 +23,9 @@ export const authorsReducer = (state = initialState, action: Action) => {
     }
 
     case actionTypes.LOAD_AUTHORS_SUCCESS: {
+      const setChecked = (author: Author) => Object.assign({}, author, {checked: false});
       return Object.assign({}, state, {
-        authors: action.payload,
+        entities: action.payload.map(setChecked),
         progress: false
       });
     }
@@ -34,3 +35,5 @@ export const authorsReducer = (state = initialState, action: Action) => {
     }
   }
 };
+
+export const getAuthors = (appState: AppState) => appState.authors.entities;

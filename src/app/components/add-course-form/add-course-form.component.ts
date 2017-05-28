@@ -1,16 +1,34 @@
-import { Component } from "@angular/core";
+import { Component, Input, ChangeDetectionStrategy, OnChanges, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+
+import { Author } from "../../models/author";
 
 @Component({
   selector: 'add-course-form',
   templateUrl: './add-course-form.html',
-  styleUrls: ['./add-course-form.scss']
+  styleUrls: ['./add-course-form.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AddCourseFormComponent {
+export class AddCourseFormComponent implements OnChanges, OnInit {
   form: FormGroup;
 
-  constructor (private fb: FormBuilder) {
-    this.createForm()
+  @Input()
+  authors: Author[] = [];
+
+  constructor (private fb: FormBuilder) {}
+
+  ngOnInit () {
+    this.createForm();
+  }
+
+  ngOnChanges (changes: any) {
+    if (!this.form || !changes.authors.currentValue) {
+      return;
+    }
+
+    this.form.patchValue({
+      authors: changes.authors.currentValue
+    });
   }
 
   createForm () {
@@ -25,6 +43,7 @@ export class AddCourseFormComponent {
       ]],
       date: [ '', Validators.required ],
       duration: [ '', Validators.required ],
+      authors: [ this.authors, Validators.required ],
     });
   }
 

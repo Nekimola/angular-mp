@@ -5,11 +5,12 @@ import { storeFreeze } from "ngrx-store-freeze";
 import { coursesReducer, CoursesState } from "./reducers/courses"
 import { AuthState, authReducer } from "./reducers/auth";
 import { localStorageSync } from "ngrx-store-localstorage";
-import { authorsReducer } from "./reducers/authors";
+import { authorsReducer, AuthorsState } from "./reducers/authors";
 
 export interface AppState {
   courses: CoursesState,
   auth: AuthState
+  authors: AuthorsState
 }
 
 const reducers = {
