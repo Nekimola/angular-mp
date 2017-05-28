@@ -28,6 +28,7 @@ import { AppCommonModule } from "./common/common.module";
 import { ApiService } from "./services/api";
 import { AuthorsEffects } from "./effects/authors";
 import { AuthorsService } from "./services/authors";
+import { NotFoundPageComponent } from "./containers/not-found-page/not-found-page.component";
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { AuthorsService } from "./services/authors";
     CoursesPageComponent,
     LoginPageComponent,
     LoginFormComponent,
+    NotFoundPageComponent,
     AddCoursePageComponent,
     SpinnerComponent
   ],

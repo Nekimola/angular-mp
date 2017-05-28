@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="course-actions">
-    <button class="btn">Edit Course</button>
+    <a class="btn" [routerLink]="['/edit-course', course.id]">Edit Course</a>
     <button class="btn" (click)="remove.next(course.id)">Delete</button>
   </div>
 </li>

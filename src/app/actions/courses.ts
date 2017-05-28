@@ -51,6 +51,12 @@ export class AddCourseFailAction implements Action {
   constructor (public payload: any) { }
 }
 
+export class EditCourseAction implements Action {
+  type = actionTypes.ADD_COURSE_FAIL;
+
+  constructor (public payload: any) { }
+}
+
 export class RemoveCourseAction implements Action {
   type = actionTypes.REMOVE_COURSE;
 

@@ -16,10 +16,10 @@ export class IsLoggedInGuard implements CanActivate {
   canActivate (): Observable<boolean> {
     return this.store.select(isUserLoggedIn)
       .map((isLoggedIn) => {
-        if (isLoggedIn) {
-          this.router.navigate(['/']);
+        if (!isLoggedIn) {
+          this.router.navigate(['/login']);
         }
-        return !isLoggedIn;
+        return isLoggedIn;
       });
   }
 }

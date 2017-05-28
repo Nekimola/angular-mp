@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
+import { Observable } from "rxjs";
 
 import { AppState } from "../../store";
-import { Observable } from "rxjs";
 import { Author } from "../../models/author";
 import { LoadAuthorsAction } from "../../actions/authors";
 import { getAuthors, getAuthorsProgress } from "../../reducers/authors";

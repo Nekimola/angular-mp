@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { Action } from "@ngrx/store";
 import { of } from "rxjs/observable/of";
 import { Response } from "@angular/http";
+import { Router } from "@angular/router";
 
 import { CoursesService } from "../services/courses";
 import {
@@ -19,7 +20,10 @@ import { Course } from "../models/course";
 
 @Injectable()
 export class CoursesEffects {
-  constructor (private actions$: Actions, private coursesSrv: CoursesService) {}
+  constructor (
+    private actions$: Actions,
+    private coursesSrv: CoursesService,
+    private router: Router) {}
 
   @Effect()
   loadCourses$: Observable<Action> = this.actions$
@@ -52,4 +56,9 @@ export class CoursesEffects {
         .map(() => new AddCourseSuccessAction(action.payload))
         .catch((error) => of(new AddCourseFailAction(error)));
     });
+
+  @Effect({dispatch: false})
+  addCourseSuccess$: Observable<Action> = this.actions$
+    .ofType(actionTypes.ADD_COURSE_SUCCESS)
+    .do(() => this.router.navigate(['/']));
 }

@@ -33,4 +33,9 @@ export class AuthEffects {
   loginSuccess$: Observable<Action> = this.actions$
     .ofType(actionTypes.LOGIN_SUCCESS)
     .do(() => this.router.navigate(['/']));
+
+  @Effect({dispatch: false})
+  logout$: Observable<Action> = this.actions$
+    .ofType(actionTypes.LOGOUT)
+    .do(() => this.router.navigate(['/login']));
 }

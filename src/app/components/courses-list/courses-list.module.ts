@@ -6,12 +6,14 @@ import { CoursesListComponent } from "./courses-list.component";
 import { CourseItemComponent } from "../course-item/course-item.component";
 import { HighlightCourDirective } from "../course-item/highlight-course.directive";
 import { AppCommonModule } from "../../common/common.module";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   imports: [
     CommonModule,
     AppCommonModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    RouterModule
   ],
   declarations: [
     CoursesListComponent,
