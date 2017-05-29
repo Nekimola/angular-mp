@@ -2,6 +2,7 @@ import { Component, Input, ChangeDetectionStrategy, OnChanges, OnInit, Output, E
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 import { Author } from "../../models/author";
+import { Course } from "../../models/course";
 
 @Component({
   selector: 'add-course-form',
@@ -15,6 +16,9 @@ export class AddCourseFormComponent implements OnChanges, OnInit {
   @Input()
   authors: Author[] = [];
 
+  @Input()
+  editCourse: Course;
+
   @Output()
   submit = new EventEmitter();
 
@@ -25,7 +29,7 @@ export class AddCourseFormComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges (changes: any) {
-    if (!this.form || !changes.authors.currentValue) {
+    if (!this.form || !changes.authors || !changes.authors.currentValue) {
       return;
     }
 

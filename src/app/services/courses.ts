@@ -27,4 +27,8 @@ export class CoursesService {
   add (course: AddCourseFormModel) {
     return this.http.post(`${this.apiUrl}/courses`, course);
   }
+
+  get (id: string) {
+    return this.http.get(`${this.apiUrl}/courses/${id}`);
+  }
 }

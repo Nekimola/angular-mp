@@ -9,7 +9,8 @@ export interface CoursesState  {
   loaded: boolean,
   searchQuery: string,
   totalItems: number,
-  entities: Course[]
+  entities: Course[],
+  editCourse: Course
 }
 
 const initialState: CoursesState = {
@@ -17,7 +18,8 @@ const initialState: CoursesState = {
   loaded: false,
   searchQuery: '',
   totalItems: 0,
-  entities: []
+  entities: [],
+  editCourse: null
 };
 
 export const coursesReducer = (state = initialState, action: Action) => {
@@ -68,6 +70,12 @@ export const coursesReducer = (state = initialState, action: Action) => {
       });
     }
 
+    case actionTypes.GET_COURSE_SUCCESS: {
+      return Object.assign({}, state, {
+        editCourse: action.payload
+      });
+    }
+
     default: {
       return state;
     }
@@ -75,6 +83,8 @@ export const coursesReducer = (state = initialState, action: Action) => {
 };
 
 export const getCourses = (appState: AppState) => appState.courses.entities;
+export const getEditCourse = (appState: AppState) => appState.courses.editCourse;
+export const getCourseById = (appState: AppState) => appState.courses.entities;
 export const getTotalCourses = (appState: AppState) => appState.courses.totalItems;
 export const getCoursesLoading = (appState: AppState) => appState.courses.loading;
 export const getCoursesLoaded = (appState: AppState) => appState.courses.loaded;

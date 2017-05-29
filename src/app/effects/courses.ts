@@ -14,7 +14,7 @@ import {
   RemoveCourseSuccessAction,
   RemoveCourseFailAction,
   AddCourseSuccessAction,
-  AddCourseFailAction
+  AddCourseFailAction, GetCourseSuccessAction, GetCourseFailAction
 } from "../actions/courses";
 import { Course } from "../models/course";
 
@@ -61,4 +61,14 @@ export class CoursesEffects {
   addCourseSuccess$: Observable<Action> = this.actions$
     .ofType(actionTypes.ADD_COURSE_SUCCESS)
     .do(() => this.router.navigate(['/']));
+
+  @Effect()
+  getCourse$: Observable<Action> = this.actions$
+    .ofType(actionTypes.GET_COURSE)
+    .switchMap((action) => {
+      return this.coursesSrv.get(action.payload)
+        .map((res: Response) => res.json())
+        .map((response) => new GetCourseSuccessAction(new Course(response)))
+        .catch((error) => of(new GetCourseFailAction(error)));
+    });
 }

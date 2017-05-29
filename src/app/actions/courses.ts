@@ -12,7 +12,10 @@ export const actionTypes = {
   REMOVE_COURSE: 'REMOVE_COURSE',
   REMOVE_COURSE_SUCCESS: 'REMOVE_COURSE_SUCCESS',
   REMOVE_COURSE_FAIL: 'REMOVE_COURSE_FAIL',
-  SEARCH_COURSE: 'SEARCH_COURSE'
+  SEARCH_COURSE: 'SEARCH_COURSE',
+  GET_COURSE: 'GET_COURSE',
+  GET_COURSE_SUCCESS: 'GET_COURSE_SUCCESS',
+  GET_COURSE_FAIL: 'GET_COURSE_FAIL'
 };
 
 export class LoadCoursesAction implements Action {
@@ -79,4 +82,22 @@ export class SearchCourseAction implements Action {
   type = actionTypes.SEARCH_COURSE;
 
   constructor (public payload: string) { }
+}
+
+export class GetCourseAction implements Action {
+  type = actionTypes.GET_COURSE;
+
+  constructor (public payload: string) { }
+}
+
+export class GetCourseSuccessAction implements Action {
+  type = actionTypes.GET_COURSE_SUCCESS;
+
+  constructor (public payload: any) { }
+}
+
+export class GetCourseFailAction implements Action {
+  type = actionTypes.GET_COURSE_FAIL;
+
+  constructor (public payload: any) { }
 }
